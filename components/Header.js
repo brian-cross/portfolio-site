@@ -9,12 +9,11 @@ import Menu from "../components/Menu";
 export default function Header({ animateIn }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  let socialIcons = useRef();
   let menuIcon = useRef();
 
   useEffect(() => {
     if (!animateIn) return;
-    gsap.from([socialIcons, menuIcon], {
+    gsap.from([".social-icons", menuIcon], {
       scale: 1.25,
       yPercent: 10,
       ease: "power1.inOut",
@@ -28,7 +27,7 @@ export default function Header({ animateIn }) {
       <header>
         <div className="container">
           <Menu open={menuOpen} />
-          <div className="social-icons" ref={node => (socialIcons = node)}>
+          <div className="social-icons">
             <TwitterIcon />
             <CodePenIcon />
             <GithubIcon />
