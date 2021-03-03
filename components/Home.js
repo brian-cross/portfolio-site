@@ -7,12 +7,10 @@ import theme from "../styles/theme";
 gsap.registerPlugin(DrawSVGPlugin);
 
 export default function Home({ onIntroComplete }) {
-  let headings = useRef();
-
   useEffect(() => {
     gsap.from(".animated-svg-text > path", {
       drawSVG: 0,
-      opacity: 0,
+      autoAlpha: 0,
       xPercent: 10,
       duration: 2.5,
       ease: "power1.inOut",
@@ -34,7 +32,7 @@ export default function Home({ onIntroComplete }) {
   return (
     <>
       <div className="container">
-        <div className="headings" ref={node => (headings = node)}>
+        <div className="headings">
           <svg
             viewBox="0 0 598.68 68.56"
             className="animated-svg-text heading-1"
@@ -97,6 +95,7 @@ export default function Home({ onIntroComplete }) {
 
             .animated-svg-text {
               path {
+                visibility: hidden;
                 fill: none;
                 stroke: currentColor;
               }
