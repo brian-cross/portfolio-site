@@ -2,10 +2,12 @@ import { forwardRef } from "react";
 import theme from "../styles/theme";
 import spacing from "../styles/spacing";
 
-const MenuIcon = forwardRef((_props, ref) => {
+const MenuIcon = forwardRef((props, ref) => {
+  const { onClick } = props;
+
   return (
     <>
-      <div className="menu-icon" ref={ref}>
+      <div className="menu-icon" ref={ref} onClick={onClick}>
         <div className="bar" />
         <div className="bar" />
       </div>
