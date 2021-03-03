@@ -1,30 +1,42 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import GithubIcon from "./GithubIcon";
 import CodePenIcon from "./CodePenIcon";
 import TwitterIcon from "./TwitterIcon";
 import MenuIcon from "./MenuIcon";
+import Menu from "../components/Menu";
 
 export default function Header({ animateIn }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   let socialIcons = useRef();
   let menuIcon = useRef();
 
   useEffect(() => {
     if (!animateIn) return;
-    gsap.defaults({ ease: "power1.inOut", autoAlpha: 0, duration: 2 });
-    gsap.from([socialIcons, menuIcon], { scale: 1.25, yPercent: 10 });
-  });
+    gsap.from([socialIcons, menuIcon], {
+      scale: 1.25,
+      yPercent: 10,
+      ease: "power1.inOut",
+      autoAlpha: 0,
+      duration: 2,
+    });
+  }, [animateIn]);
 
   return (
     <>
       <header>
         <div className="container">
+          <Menu open={menuOpen} />
           <div className="social-icons" ref={node => (socialIcons = node)}>
             <TwitterIcon />
             <CodePenIcon />
             <GithubIcon />
           </div>
-          <MenuIcon ref={node => (menuIcon = node)} />
+          <MenuIcon
+            ref={node => (menuIcon = node)}
+            onClick={() => setMenuOpen(prev => !prev)}
+          />
         </div>
       </header>
       <style jsx>
