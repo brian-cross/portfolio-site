@@ -1,5 +1,5 @@
 const primary = "hsl(215, 15%, 50%)";
-const primaryDarkened = "hsl(215, 15%, 33%)";
+const primaryDarkened = "hsl(215, 15%, 25%)";
 
 const theme = {
   colors: {
