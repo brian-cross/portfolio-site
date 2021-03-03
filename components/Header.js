@@ -11,18 +11,8 @@ export default function Header({ animateIn }) {
 
   useEffect(() => {
     if (!animateIn) return;
-
-    gsap.from(socialIcons, {
-      autoAlpha: 0,
-      xPercent: -50,
-      yPercent: -50,
-    });
-
-    gsap.from(menuIcon, {
-      autoAlpha: 0,
-      xPercent: 50,
-      yPercent: -50,
-    });
+    gsap.defaults({ ease: "power1.inOut", autoAlpha: 0, duration: 2 });
+    gsap.from([socialIcons, menuIcon], { scale: 1.25, yPercent: 10 });
   });
 
   return (
