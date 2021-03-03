@@ -19,7 +19,7 @@ export default function Home({ onIntroComplete }) {
         amount: 2,
         from: "random",
         onComplete: function () {
-          gsap.to(this._targets[0], {
+          gsap.to(this.targets()[0], {
             fill: theme.colors.primaryDarkened,
             ease: "power1.inOut",
             duration: 1.5,
