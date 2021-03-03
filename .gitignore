@@ -33,5 +33,5 @@ yarn-error.log*
 # vercel
 .vercel
 
-#gsap modules
-gsap-bonus.tgz
+#gsap private registry config
+.npmrc
