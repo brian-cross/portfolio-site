@@ -2,7 +2,7 @@ import IconWrapper from "./IconWrapper";
 
 export default function TwitterIcon() {
   return (
-    <IconWrapper>
+    <IconWrapper href="https://twitter.com/Brian_C_Cross">
       <svg
         aria-hidden="true"
         focusable="false"

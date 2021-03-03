@@ -2,7 +2,7 @@ import IconWrapper from "./IconWrapper";
 
 export default function GithubIcon() {
   return (
-    <IconWrapper>
+    <IconWrapper href="https://github.com/brian-cross">
       <svg
         aria-hidden="true"
         focusable="false"

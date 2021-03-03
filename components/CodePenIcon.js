@@ -2,7 +2,7 @@ import IconWrapper from "./IconWrapper";
 
 export default function CodePenIcon() {
   return (
-    <IconWrapper>
+    <IconWrapper href="https://codepen.io/BrianCross">
       <svg
         aria-hidden="true"
         focusable="false"

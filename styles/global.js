@@ -32,6 +32,10 @@ export default css.global`
     padding: 0;
   }
 
+  a {
+    color: currentColor;
+  }
+
   // Scrollbar
   * {
     scrollbar-width: thin;
