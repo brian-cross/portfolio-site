@@ -17,7 +17,6 @@ export default function ScrollIndicator() {
         start: "top top",
         end: "bottom bottom",
         scrub: 1,
-        // markers: true,
       },
     });
   }, []);
@@ -30,7 +29,7 @@ export default function ScrollIndicator() {
           position: fixed;
           top: 0;
           left: 0;
-          height: 1px;
+          height: 2px;
           width: 100%;
           transform: scaleX(0);
           background: ${theme.colors.primary};
