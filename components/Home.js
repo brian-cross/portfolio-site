@@ -76,13 +76,11 @@ export default function Home({ onIntroComplete }) {
       <style jsx>
         {`
           .container {
+            ${spacing.page}
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100%;
-            width: ${spacing.pageWidth};
-            margin: 0 auto;
 
             .headings {
               display: flex;
