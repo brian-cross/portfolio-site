@@ -6,17 +6,17 @@ import theme from "../styles/theme";
 
 gsap.registerPlugin(DrawSVGPlugin);
 
-export default function Home({ onIntroComplete }) {
+export default function Home({ onVisible }) {
   useEffect(() => {
     gsap.from(".animated-svg-text > path", {
       drawSVG: 0,
       autoAlpha: 0,
       xPercent: 10,
-      duration: 2.5,
+      duration: 1.5,
       ease: "power1.inOut",
-      onComplete: () => onIntroComplete(),
+      onComplete: onVisible,
       stagger: {
-        amount: 2,
+        amount: 1.5,
         from: "random",
         onComplete: function () {
           gsap.to(this.targets()[0], {
@@ -31,7 +31,7 @@ export default function Home({ onIntroComplete }) {
 
   return (
     <>
-      <div className="container">
+      <div className="container start-trigger">
         <div className="headings">
           <svg
             viewBox="0 0 598.68 68.56"
