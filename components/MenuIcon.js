@@ -1,15 +1,34 @@
-import { forwardRef } from "react";
+import { forwardRef, useEffect } from "react";
 import theme from "../styles/theme";
 import spacing from "../styles/spacing";
+import gsap from "gsap";
 
 const MenuIcon = forwardRef((props, ref) => {
-  const { onClick } = props;
+  const { open, onClick } = props;
+
+  useEffect(() => {
+    const defaults = { duration: 0.3, ease: "power1.inOut" };
+
+    const menuIcon = document.querySelector(".menu-icon");
+    const bar = document.querySelector(".bar");
+
+    const iconCenter = menuIcon.clientHeight / 2;
+    const barCenter = bar.offsetTop + bar.clientHeight / 2;
+    const shift = iconCenter - barCenter;
+
+    if (open) {
+      gsap.to(".top", { rotate: 45, y: shift, ...defaults });
+      gsap.to(".bottom", { rotate: -45, y: -shift, ...defaults });
+    } else {
+      gsap.to([".top", ".bottom"], { rotate: 0, y: 0, ...defaults });
+    }
+  }, [open]);
 
   return (
     <>
       <div className="menu-icon" ref={ref} onClick={onClick}>
-        <div className="bar" />
-        <div className="bar" />
+        <div className="top bar" />
+        <div className="bottom bar" />
       </div>
       <style jsx>{`
         .menu-icon {
@@ -17,6 +36,7 @@ const MenuIcon = forwardRef((props, ref) => {
           position: relative;
           width: ${spacing.headerIconWidth};
           height: ${spacing.headerIconWidth};
+          cursor: pointer;
           visibility: hidden;
 
           .bar {
