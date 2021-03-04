@@ -5,9 +5,11 @@ import CodePenIcon from "./CodePenIcon";
 import TwitterIcon from "./TwitterIcon";
 import MenuIcon from "./MenuIcon";
 import Menu from "../components/Menu";
+import ScrollIndicator from "./ScrollIndicator";
 
-export default function Header({ animateIn }) {
+export default function Header({ animateIn, onVisible }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [enableScroll, setEnableScroll] = useState(false);
 
   let menuIcon = useRef();
 
@@ -19,6 +21,10 @@ export default function Header({ animateIn }) {
       ease: "power1.inOut",
       autoAlpha: 0,
       duration: 2,
+      onComplete: () => {
+        onVisible();
+        setEnableScroll(true);
+      },
     });
   }, [animateIn]);
 
@@ -37,6 +43,7 @@ export default function Header({ animateIn }) {
             ref={node => (menuIcon = node)}
             onClick={() => setMenuOpen(prev => !prev)}
           />
+          {enableScroll ? <ScrollIndicator /> : null}
         </div>
       </header>
       <style jsx>
