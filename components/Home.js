@@ -1,6 +1,6 @@
 import { gsap } from "gsap";
 import { DrawSVGPlugin } from "gsap/dist/DrawSVGPlugin";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import spacing from "../styles/spacing";
 import theme from "../styles/theme";
 
