@@ -61,4 +61,13 @@ export default css.global`
     background-color: ${scrollbar.thumb};
     border-radius: ${spacing.scrollbarWidth};
   }
+
+  // Hiding scrollbar
+  * {
+    scrollbar-width: none;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
