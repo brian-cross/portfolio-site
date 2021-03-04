@@ -17,7 +17,7 @@ export default function Menu({ open }) {
     if (open) {
       menu
         .set(".menu", { autoAlpha: 1, clipPath: menuClosed })
-        .to(".menu", { clipPath: menuOpen })
+        .to(".menu", { clipPath: menuOpen, duration: 0.6 })
         .fromTo(
           "li",
           { opacity: 0, xPercent: 10 },
