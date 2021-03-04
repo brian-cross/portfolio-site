@@ -7,15 +7,30 @@ export default function Menu({ open }) {
   }, [open]);
 
   function handleMenu() {
-    console.log(`handleMenu(${open})`);
-    const tl = gsap.timeline();
+    // const menuClosed = "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)";
+    // const menuOpen = "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)";
+    const menuClosed = "circle(0vmax at top right)";
+    const menuOpen = "circle(100vmax at top right)";
+
+    const menu = gsap.timeline();
 
     if (open) {
-      tl.set(".menu", { autoAlpha: 1 });
-      tl.to(".menu", { top: "0vh" });
+      menu
+        .set(".menu", { autoAlpha: 1, clipPath: menuClosed })
+        .to(".menu", { clipPath: menuOpen })
+        .fromTo(
+          "li",
+          { opacity: 0, xPercent: 10 },
+          {
+            opacity: 1,
+            xPercent: 0,
+            stagger: 0.1,
+            ease: "power4.out",
+            duration: 0.6,
+          }
+        );
     } else {
-      tl.to(".menu", { top: "-100vh" });
-      tl.set(".menu", { autoAlpha: 0 });
+      menu.to(".menu", { clipPath: menuClosed }).set(".menu", { autoAlpha: 0 });
     }
   }
 
@@ -24,10 +39,18 @@ export default function Menu({ open }) {
       <div className="menu">
         <nav>
           <ul>
-            <li>Works</li>
-            <li>About</li>
-            <li>Contact</li>
-            <li>Articles</li>
+            <li>
+              <a href="#">Work</a>
+            </li>
+            <li>
+              <a href="#">About</a>
+            </li>
+            <li>
+              <a href="#">Contact</a>
+            </li>
+            <li>
+              <a href="#">Articles</a>
+            </li>
           </ul>
         </nav>
       </div>
@@ -40,7 +63,13 @@ export default function Menu({ open }) {
             left: 0;
             width: 100vw;
             height: 100vh;
+            padding-right: 5vw;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
             background-color: #800;
+            font-size: clamp(4rem, 15vmin, 8rem);
+            text-align: right;
           }
         `}
       </style>
