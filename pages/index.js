@@ -6,14 +6,19 @@ import Work from "../components/Work";
 import Contact from "../components/Contact";
 
 export default function Main() {
-  const [homeIntroComplete, setHomeIntroComplete] = useState(false);
+  const [homeVisible, setHomeVisible] = useState(false);
+  const [headerVisible, setHeaderVisible] = useState(false);
+
   return (
     <>
-      <Header animateIn={homeIntroComplete} />
-      <Home onIntroComplete={() => setHomeIntroComplete(true)} />
-      <Work />
-      <About />
-      <Contact />
+      <Header
+        animateIn={homeVisible}
+        onVisible={() => setHeaderVisible(true)}
+      />
+      <Home onVisible={() => setHomeVisible(true)} />
+      {headerVisible ? <Work /> : null}
+      {headerVisible ? <About /> : null}
+      {headerVisible ? <Contact /> : null}
     </>
   );
 }
