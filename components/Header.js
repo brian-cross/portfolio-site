@@ -33,6 +33,7 @@ export default function Header({ animateIn }) {
             <GithubIcon />
           </div>
           <MenuIcon
+            open={menuOpen}
             ref={node => (menuIcon = node)}
             onClick={() => setMenuOpen(prev => !prev)}
           />
