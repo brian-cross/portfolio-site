@@ -34,6 +34,13 @@ export default css.global`
 
   a {
     color: currentColor;
+    text-decoration: none;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
 
   // Scrollbar
