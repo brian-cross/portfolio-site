@@ -30,32 +30,34 @@ const MenuIcon = forwardRef((props, ref) => {
         <div className="top bar" />
         <div className="bottom bar" />
       </div>
-      <style jsx>{`
-        .menu-icon {
-          display: inline-block;
-          position: relative;
-          width: ${spacing.headerIconWidth};
-          height: ${spacing.headerIconWidth};
-          cursor: pointer;
-          visibility: hidden;
+      <style jsx>
+        {`
+          .menu-icon {
+            display: inline-block;
+            position: relative;
+            width: ${spacing.headerIconWidth};
+            height: ${spacing.headerIconWidth};
+            cursor: pointer;
+            visibility: hidden;
 
-          .bar {
-            position: absolute;
-            width: 100%;
-            height: 0.3125rem;
-            height: calc(${spacing.headerIconWidth} / 8);
-            background: ${theme.colors.primary};
+            .bar {
+              position: absolute;
+              width: 100%;
+              height: 0.3125rem;
+              height: calc(${spacing.headerIconWidth} / 8);
+              background: ${theme.colors.primary};
 
-            &:first-of-type {
-              top: calc(${spacing.headerIconWidth} / 4);
-            }
+              &:first-of-type {
+                top: calc(${spacing.headerIconWidth} / 4);
+              }
 
-            &:last-of-type {
-              bottom: calc(${spacing.headerIconWidth} / 4);
+              &:last-of-type {
+                bottom: calc(${spacing.headerIconWidth} / 4);
+              }
             }
           }
-        }
-      `}</style>
+        `}
+      </style>
     </>
   );
 });

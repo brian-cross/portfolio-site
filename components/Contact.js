@@ -6,12 +6,14 @@ export default function Contact() {
       <div className="container contact">
         <h1>Contact Me</h1>
       </div>
-      <style jsx>{`
-        .container {
-          ${spacing.page}
-          height: 100vh;
-        }
-      `}</style>
+      <style jsx>
+        {`
+          .container {
+            ${spacing.page}
+            height: 100vh;
+          }
+        `}
+      </style>
     </>
   );
 }
