@@ -1,37 +1,57 @@
 import { gsap } from "gsap";
 import { DrawSVGPlugin } from "gsap/dist/DrawSVGPlugin";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useEffect } from "react";
 import spacing from "../styles/spacing";
 import theme from "../styles/theme";
 
-gsap.registerPlugin(DrawSVGPlugin);
+gsap.registerPlugin(DrawSVGPlugin, ScrollTrigger);
 
 export default function Home({ onVisible }) {
   useEffect(() => {
     gsap.from(".animated-svg-text > path", {
       drawSVG: 0,
       autoAlpha: 0,
-      xPercent: 10,
+      xPercent: 25,
       duration: 1.5,
       ease: "power1.inOut",
       onComplete: onVisible,
       stagger: {
         amount: 1.5,
         from: "random",
-        onComplete: function () {
-          gsap.to(this.targets()[0], {
-            fill: theme.colors.primaryDarkened,
-            ease: "power1.inOut",
-            duration: 1.5,
-          });
-        },
+        // onComplete: function () {
+        //   gsap.to(this.targets()[0], {
+        //     fill: theme.colors.primaryDarkened,
+        //     ease: "power1.inOut",
+        //     duration: 1.5,
+        //   });
+        // },
+      },
+    });
+
+    ScrollTrigger.create({
+      trigger: ".home",
+      start: "top top",
+      end: "500% top",
+      pin: ".headings",
+    });
+
+    gsap.to(".headings", {
+      opacity: 0,
+      xPercent: -100,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".home",
+        start: "10% top",
+        end: "bottom 60%",
+        scrub: 1,
       },
     });
   }, []);
 
   return (
     <>
-      <div className="container start-trigger">
+      <div className="container home">
         <div className="headings">
           <svg
             viewBox="0 0 598.68 68.56"
@@ -77,12 +97,14 @@ export default function Home({ onVisible }) {
         {`
           .container {
             ${spacing.page}
+            height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
 
             .headings {
+              position: relative;
               display: flex;
               flex-direction: column;
               align-items: flex-start;
@@ -92,21 +114,24 @@ export default function Home({ onVisible }) {
             }
 
             .animated-svg-text {
+              position: relative;
+              top: -3rem;
               path {
                 visibility: hidden;
                 fill: none;
                 stroke: currentColor;
               }
             }
+
             .heading-1 {
               margin-bottom: 3rem;
               height: clamp(2.5rem, 6vw, 6rem);
-              stroke-width: 2;
+              stroke-width: 1.2;
             }
 
             .heading-2 {
               height: clamp(2.75rem, 8vw, 8rem);
-              stroke-width: 1.5;
+              stroke-width: 0.9;
             }
           }
         `}
