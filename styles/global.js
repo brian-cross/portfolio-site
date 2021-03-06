@@ -14,12 +14,13 @@ export default css.global`
 
   html {
     font-size: clamp(10px, 2.2vw, 16px);
-    background: black;
+    background: ${theme.colors.htmlBackground};
   }
 
   body {
     color: ${theme.colors.primary};
     background: ${theme.colors.siteBackground};
+    background-attachment: fixed;
     font-family: ${theme.fontFamily};
     user-select: none;
   }
@@ -27,7 +28,6 @@ export default css.global`
   html,
   body,
   #__next {
-    height: 100vh;
     margin: 0;
     padding: 0;
   }
@@ -35,6 +35,11 @@ export default css.global`
   a {
     color: currentColor;
     text-decoration: none;
+  }
+
+  h1 {
+    font-size: 5rem;
+    text-transform: uppercase;
   }
 
   ul {
