@@ -4,6 +4,7 @@ import Home from "../components/Home";
 import About from "../components/About";
 import Work from "../components/Work";
 import Contact from "../components/Contact";
+import ScrollPrompt from "../components/ScrollPrompt";
 
 export default function Main() {
   const [homeVisible, setHomeVisible] = useState(false);
@@ -16,6 +17,7 @@ export default function Main() {
         onVisible={() => setHeaderVisible(true)}
       />
       <Home onVisible={() => setHomeVisible(true)} />
+      {headerVisible ? <ScrollPrompt /> : null}
       {headerVisible ? <Work /> : null}
       {headerVisible ? <About /> : null}
       {headerVisible ? <Contact /> : null}
