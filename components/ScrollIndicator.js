@@ -12,8 +12,8 @@ export default function ScrollIndicator() {
       transformOrigin: "left",
       ease: "none",
       scrollTrigger: {
-        trigger: ".start-trigger",
-        endTrigger: ".end-trigger",
+        trigger: ".home",
+        endTrigger: ".contact",
         start: "top top",
         end: "bottom bottom",
         scrub: 1,
