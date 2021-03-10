@@ -1,8 +1,8 @@
-import useStrokeText from "../hooks/useStrokeText";
+import useAnimatedHeading from "../hooks/useAnimatedHeading";
 import spacing from "../styles/spacing";
 
 export default function Contact() {
-  const ref = useStrokeText();
+  const ref = useAnimatedHeading();
   return (
     <>
       <section className="container contact">

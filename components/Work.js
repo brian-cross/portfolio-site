@@ -1,9 +1,9 @@
 import spacing from "../styles/spacing";
 import PortfolioItem from "./PortfolioItem";
-import useStrokeText from "../hooks/useStrokeText";
+import useAnimatedHeading from "../hooks/useAnimatedHeading";
 
 export default function Work() {
-  const ref = useStrokeText();
+  const ref = useAnimatedHeading();
 
   return (
     <>

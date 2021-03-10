@@ -1,8 +1,8 @@
-import useStrokeText from "../hooks/useStrokeText";
+import useAnimatedHeading from "../hooks/useAnimatedHeading";
 import spacing from "../styles/spacing";
 
 export default function About() {
-  const ref = useStrokeText();
+  const ref = useAnimatedHeading();
 
   return (
     <>
