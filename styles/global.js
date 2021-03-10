@@ -38,8 +38,17 @@ export default css.global`
   }
 
   h1 {
-    font-size: 5rem;
+    font-size: clamp(3rem, 9vw, 9rem);
     text-transform: uppercase;
+    margin: 0;
+  }
+
+  h2 {
+    font-size: clamp(2.4rem, 5vw, 4rem);
+  }
+
+  p {
+    font-size: 1.5rem;
   }
 
   ul {
