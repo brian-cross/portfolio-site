@@ -17,16 +17,16 @@ export default function Menu({ open }) {
     if (open) {
       menu
         .set(".menu", { autoAlpha: 1, clipPath: menuClosed })
-        .to(".menu", { clipPath: menuOpen, duration: 0.6 })
+        .to(".menu", { clipPath: menuOpen, duration: 0.6, ease: "power2.out" })
         .fromTo(
           "li",
           { opacity: 0, xPercent: 10 },
           {
             opacity: 1,
             xPercent: 0,
-            stagger: 0.1,
-            ease: "power4.out",
-            duration: 0.6,
+            stagger: 0.15,
+            ease: "power2.out",
+            duration: 1.5,
           }
         );
     } else {
@@ -69,6 +69,7 @@ export default function Menu({ open }) {
             justify-content: flex-end;
             background-color: #800;
             font-size: clamp(4rem, 15vmin, 8rem);
+            font-weight: bold;
             text-align: right;
           }
         `}
