@@ -55,7 +55,7 @@ export default function ScrollPrompt() {
 
               .line {
                 width: 100%;
-                height: 0.25rem;
+                height: 0.125rem;
                 border-radius: 0.25rem;
                 background: currentColor;
                 transform: scaleX(0);
