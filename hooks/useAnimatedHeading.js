@@ -25,7 +25,6 @@ export default function useAnimatedHeading() {
         left: 0.05em;
         -webkit-text-stroke: 0.02em currentColor;
         -webkit-text-fill-color: rgba(0, 0, 0, 0);
-        opacity: 0;
         `
       );
 
@@ -37,19 +36,16 @@ export default function useAnimatedHeading() {
       const textSplit = new SplitText(text);
       const strokeTextSplit = new SplitText(strokeText);
 
-      const tl = gsap
-        .timeline({
-          defaults: {
-            duration: 2,
-            ease: "power2.out",
-          },
-          scrollTrigger: {
-            trigger: text,
-            start: "top 85%",
-            end: "top 85%",
-            toggleActions: "none play none reverse",
-          },
-        })
+      const tlDefaults = {
+        defaults: {
+          duration: 2,
+          ease: "power2.out",
+        },
+        paused: true,
+      };
+
+      const tlText = gsap
+        .timeline(tlDefaults)
         .from(
           textSplit.lines,
           {
@@ -72,29 +68,40 @@ export default function useAnimatedHeading() {
           },
           "<+=0.5"
         );
-      // .from(
-      //   strokeTextSplit.lines,
-      //   {
-      //     x: () => window.innerWidth * -0.1,
-      //   },
-      //   0
-      // )
-      // .from(
-      //   strokeTextSplit.chars,
-      //   {
-      //     x: i => i * window.innerWidth * -0.01,
-      //   },
-      //   "<+=0.5"
-      // )
-      // .fromTo(
-      //   strokeTextSplit.chars,
-      //   { opacity: 0 },
-      //   {
-      //     opacity: 0.5,
-      //     stagger: 0.1,
-      //   },
-      //   "<+=0.5"
-      // );
+
+      const tlStroke = gsap
+        .timeline(tlDefaults)
+        .from(
+          strokeTextSplit.lines,
+          {
+            x: () => window.innerWidth * -0.1,
+          },
+          0
+        )
+        .fromTo(
+          strokeTextSplit.chars,
+          { opacity: 0 },
+          {
+            opacity: 0.5,
+            stagger: 0.03,
+          },
+          "<+=1"
+        );
+
+      ScrollTrigger.create({
+        trigger: text,
+        start: "top bottom",
+        end: "top 85%",
+        onLeave: () => {
+          tlText.timeScale(1).play();
+          tlStroke.timeScale(1).play();
+        },
+        onEnterBack: () => {
+          tlText.timeScale(2).reverse();
+          tlStroke.timeScale(2).reverse();
+        },
+        markers: true,
+      });
     }
   }, []);
 
