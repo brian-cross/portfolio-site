@@ -43,8 +43,8 @@ export default function Home({ onVisible }) {
       ease: "power2.out",
       scrollTrigger: {
         trigger: ".home",
-        start: "5% top",
-        end: "bottom 10%",
+        start: "10% top",
+        end: "bottom top",
         scrub: 1,
       },
     });
