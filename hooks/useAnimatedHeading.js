@@ -100,7 +100,6 @@ export default function useAnimatedHeading() {
           tlText.timeScale(2).reverse();
           tlStroke.timeScale(2).reverse();
         },
-        markers: true,
       });
     }
   }, []);
