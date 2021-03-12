@@ -17,7 +17,6 @@ export default function PortfolioItem({ imgSrc, heading, description, link }) {
         start: "top 75%",
         end: "top center",
         toggleActions: "none play none reverse",
-        // markers: true,
       },
     });
   }, []);
@@ -45,13 +44,18 @@ export default function PortfolioItem({ imgSrc, heading, description, link }) {
             flex-wrap: wrap-reverse;
             justify-content: space-evenly;
             width: 100%;
+            margin: 4rem 0;
             z-index: 1;
 
             .mockup,
             .description {
-              margin: 4rem 1rem 0;
+              padding: 3rem 2rem;
               flex: 1 1 32rem;
               max-width: 50rem;
+            }
+
+            .mockup {
+              background: rgba($color: #fff, $alpha: 0.8);
             }
 
             .description {
