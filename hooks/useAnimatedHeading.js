@@ -49,7 +49,7 @@ export default function useAnimatedHeading() {
         .from(
           textSplit.lines,
           {
-            x: () => window.innerWidth * -0.1,
+            x: () => window.innerWidth * -0.02,
           },
           0
         )
@@ -74,7 +74,7 @@ export default function useAnimatedHeading() {
         .from(
           strokeTextSplit.lines,
           {
-            x: () => window.innerWidth * -0.1,
+            x: () => window.innerWidth * -0.02,
           },
           0
         )
