@@ -18,13 +18,12 @@ export default function ScrollPrompt() {
     gsap.to(".scroll-prompt", {
       x: "-5vw",
       opacity: 0,
-      ease: "power1.in",
-      duration: 1.5,
+      ease: "none",
       scrollTrigger: {
         trigger: ".home",
         start: "10% top",
-        end: "bottom bottom",
-        toggleActions: "play none none reverse",
+        end: "20% top",
+        scrub: 1,
       },
     });
   }, []);
