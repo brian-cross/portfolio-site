@@ -47,6 +47,7 @@ export default css.global`
     font-size: clamp(2.4rem, 5vw, 4rem);
   }
 
+  a,
   p {
     font-size: 1.5rem;
   }
