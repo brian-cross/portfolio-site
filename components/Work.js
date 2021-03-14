@@ -8,9 +8,18 @@ export default function Work() {
   return (
     <>
       <section className="container work">
-        <h1 ref={ref}>Selected Works</h1>
+        <h1 ref={ref}>Projects</h1>
         <div className="portfolio-items">
           <PortfolioItem
+            imgSrc="/facecall.png"
+            heading="FaceCall"
+            description="FaceCall is a browser based video calling app. Built with React
+              and WebRTC on the frontend and a custom Node.JS server on the
+              backend. Uses WebRTC signaling infrastructure from Twilio for
+              initiating the peer to peer video link."
+            link="https://www.facecall.app"
+          />
+          {/* <PortfolioItem
             imgSrc="/laptop-phone-mockup-facecall.png"
             heading="FaceCall"
             description="FaceCall is a browser based video calling app. Built with React
@@ -27,16 +36,7 @@ export default function Work() {
               backend. Uses WebRTC signaling infrastructure from Twilio for
               initiating the peer to peer video link."
             link="https://www.facecall.app"
-          />
-          <PortfolioItem
-            imgSrc="/laptop-phone-mockup-facecall.png"
-            heading="FaceCall"
-            description="FaceCall is a browser based video calling app. Built with React
-              and WebRTC on the frontend and a custom Node.JS server on the
-              backend. Uses WebRTC signaling infrastructure from Twilio for
-              initiating the peer to peer video link."
-            link="https://www.facecall.app"
-          />
+          /> */}
         </div>
       </section>
       <style jsx>
@@ -48,12 +48,6 @@ export default function Work() {
             flex-direction: column;
             justify-content: space-evenly;
             padding: 6rem 0;
-
-            h1 {
-              //visibility: hidden;
-              //position: relative;
-              //margin-bottom: 0;
-            }
           }
         `}
       </style>
