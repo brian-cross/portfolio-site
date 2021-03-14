@@ -6,19 +6,21 @@ import CodePenIcon from "./CodePenIcon";
 import TwitterIcon from "./TwitterIcon";
 import MenuIcon from "./MenuIcon";
 import Menu from "../components/Menu";
-import ScrollIndicator from "./ScrollIndicator";
+// import ScrollIndicator from "./ScrollIndicator";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Header({ animateIn, onVisible }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [enableScroll, setEnableScroll] = useState(false);
+  const [scrollDirection, setScrollDirection] = useState(null);
 
   let menuIcon = useRef();
+  let socialIcons = useRef();
 
   useEffect(() => {
     if (!animateIn) return;
-    gsap.from([".social-icons", menuIcon], {
+    gsap.from([socialIcons, menuIcon], {
       scale: 1.25,
       yPercent: 10,
       ease: "power1.inOut",
@@ -31,12 +33,39 @@ export default function Header({ animateIn, onVisible }) {
     });
   }, [animateIn]);
 
+  useEffect(() => {
+    if (!enableScroll) return;
+    ScrollTrigger.create({
+      start: "top top",
+      end: `+=${document.body.clientHeight}`,
+      onUpdate: ({ direction }) => setScrollDirection(direction),
+    });
+  }, [enableScroll]);
+
+  useEffect(() => {
+    if (scrollDirection === null) return;
+    if (scrollDirection === 1)
+      gsap.to([socialIcons, menuIcon], {
+        opacity: 0,
+        yPercent: -50,
+        duration: 1,
+        ease: "power1.out",
+      });
+    if (scrollDirection === -1)
+      gsap.to([socialIcons, menuIcon], {
+        opacity: 1,
+        yPercent: 0,
+        duration: 1,
+        ease: "power1.out",
+      });
+  }, [scrollDirection]);
+
   return (
     <>
       <header>
         <div className="container">
           <Menu open={menuOpen} />
-          <div className="social-icons">
+          <div className="social-icons" ref={node => (socialIcons = node)}>
             <TwitterIcon />
             <CodePenIcon />
             <GithubIcon />
@@ -46,7 +75,7 @@ export default function Header({ animateIn, onVisible }) {
             ref={node => (menuIcon = node)}
             onClick={() => setMenuOpen(prev => !prev)}
           />
-          {enableScroll ? <ScrollIndicator /> : null}
+          {/* {enableScroll ? <ScrollIndicator /> : null} */}
         </div>
       </header>
       <style jsx>
