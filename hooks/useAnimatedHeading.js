@@ -11,10 +11,14 @@ export default function useAnimatedHeading() {
   useEffect(() => {
     if (ref.current !== null) {
       const text = ref.current;
+
       const wrapper = document.createElement("div");
       wrapper.style.position = "relative";
 
       const strokeText = text.cloneNode(true);
+
+      const { textAlign } = getComputedStyle(text);
+
       strokeText.setAttribute("aria-hidden", "true");
       strokeText.setAttribute(
         "style",
@@ -22,7 +26,7 @@ export default function useAnimatedHeading() {
         position: absolute;
         margin: 0;
         top: 0.05em;
-        left: 0.05em;
+        ${textAlign === "right" ? "right: -" : "left: "}0.05em;
         -webkit-text-stroke: 0.02em currentColor;
         -webkit-text-fill-color: rgba(0, 0, 0, 0);
         `
@@ -91,7 +95,7 @@ export default function useAnimatedHeading() {
       ScrollTrigger.create({
         trigger: text,
         start: "top bottom",
-        end: "top 85%",
+        end: "top 80%",
         onLeave: () => {
           tlText.timeScale(1).play();
           tlStroke.timeScale(1).play();
