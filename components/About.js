@@ -14,6 +14,10 @@ export default function About() {
           .container {
             ${spacing.page}
             min-height: 100vh;
+
+            h1 {
+              text-align: right;
+            }
           }
         `}
       </style>
