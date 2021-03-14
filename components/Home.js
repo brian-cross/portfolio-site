@@ -30,24 +30,24 @@ export default function Home({ onVisible }) {
       },
     });
 
-    ScrollTrigger.create({
-      trigger: ".home",
-      start: "top top",
-      end: "bottom top",
-      pin: ".headings",
-    });
+    // ScrollTrigger.create({
+    //   trigger: ".home",
+    //   start: "top top",
+    //   end: "bottom top",
+    //   pin: ".headings",
+    // });
 
-    gsap.to([".heading-1-wrapper", ".heading-2-wrapper"], {
-      opacity: 0,
-      xPercent: -100,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: ".home",
-        start: "10% top",
-        end: "bottom top",
-        scrub: 1,
-      },
-    });
+    // gsap.to([".heading-1-wrapper", ".heading-2-wrapper"], {
+    //   opacity: 0,
+    //   xPercent: -100,
+    //   ease: "power2.out",
+    //   scrollTrigger: {
+    //     trigger: ".home",
+    //     start: "10% top",
+    //     end: "bottom top",
+    //     scrub: 1,
+    //   },
+    // });
   }, []);
 
   return (
