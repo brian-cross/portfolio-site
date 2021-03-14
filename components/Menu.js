@@ -68,9 +68,12 @@ export default function Menu({ open }) {
             align-items: center;
             justify-content: flex-end;
             background-color: #800;
-            font-size: clamp(4rem, 15vmin, 8rem);
-            font-weight: bold;
-            text-align: right;
+
+            a {
+              font-size: clamp(4rem, 15vmin, 8rem);
+              font-weight: bold;
+              text-align: right;
+            }
           }
         `}
       </style>
