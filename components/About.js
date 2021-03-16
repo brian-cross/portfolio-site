@@ -8,6 +8,7 @@ export default function About() {
     <>
       <section className="container about">
         <h1 ref={ref}>About Me</h1>
+        <p>Hey I'm Brian. I design and build websites and web apps.</p>
       </section>
       <style jsx>
         {`

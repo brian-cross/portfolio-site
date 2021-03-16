@@ -11,7 +11,7 @@ export default function Work() {
         <h1 ref={ref}>Projects</h1>
         <div className="portfolio-items">
           <PortfolioItem
-            imgSrc="/facecall.png"
+            imgSrc="/facecall-medium-blue.png"
             heading="FaceCall"
             description="FaceCall is a browser based video calling app. Built with React
               and WebRTC on the frontend and a custom Node.JS server on the
