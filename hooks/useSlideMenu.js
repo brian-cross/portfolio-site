@@ -18,8 +18,6 @@ export default function useSlideMenu(isOpen) {
   }, []);
 
   useEffect(() => {
-    console.log(linksRef.current);
-
     if (isOpen) {
       // Open menu
       gsap
