@@ -1,42 +1,12 @@
-import { useEffect } from "react";
-import gsap from "gsap";
+import useSlideMenu from "../hooks/useSlideMenu";
+import theme from "../styles/theme";
 
-export default function Menu({ open }) {
-  useEffect(() => {
-    handleMenu();
-  }, [open]);
-
-  function handleMenu() {
-    // const menuClosed = "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)";
-    // const menuOpen = "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)";
-    const menuClosed = "circle(0vmax at top right)";
-    const menuOpen = "circle(100vmax at top right)";
-
-    const menu = gsap.timeline();
-
-    if (open) {
-      menu
-        .set(".menu", { autoAlpha: 1, clipPath: menuClosed })
-        .to(".menu", { clipPath: menuOpen, duration: 0.6, ease: "power2.out" })
-        .fromTo(
-          "li",
-          { opacity: 0, xPercent: 10 },
-          {
-            opacity: 1,
-            xPercent: 0,
-            stagger: 0.15,
-            ease: "power2.out",
-            duration: 1.5,
-          }
-        );
-    } else {
-      menu.to(".menu", { clipPath: menuClosed }).set(".menu", { autoAlpha: 0 });
-    }
-  }
+export default function Menu({ isOpen }) {
+  const menu = useSlideMenu(isOpen);
 
   return (
     <>
-      <div className="menu">
+      <div className="menu" ref={menu}>
         <nav>
           <ul>
             <li>
@@ -67,12 +37,12 @@ export default function Menu({ open }) {
             display: flex;
             align-items: center;
             justify-content: flex-end;
-            background-color: #800;
+            background-color: ${theme.colors.menuBackground};
+            text-align: right;
 
             a {
               font-size: clamp(4rem, 15vmin, 8rem);
               font-weight: bold;
-              text-align: right;
             }
           }
         `}
