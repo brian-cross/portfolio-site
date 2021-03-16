@@ -29,7 +29,7 @@ export default function PortfolioItem({ imgSrc, heading, description, link }) {
 
     const triggerDefaults = {
       start: "top bottom",
-      end: "top 80%",
+      end: "top 70%",
       toggleActions: "none play reverse none",
     };
 
