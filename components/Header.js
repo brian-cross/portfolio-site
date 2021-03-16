@@ -64,7 +64,7 @@ export default function Header({ animateIn, onVisible }) {
     <>
       <header>
         <div className="container">
-          <Menu open={menuOpen} />
+          <Menu isOpen={menuOpen} />
           <div className="social-icons" ref={node => (socialIcons = node)}>
             <TwitterIcon />
             <CodePenIcon />
