@@ -1,12 +1,12 @@
-const primary = "hsl(215, 15%, 50%)";
-const primaryDarkened = "hsl(215, 15%, 25%)";
+const primary = "hsl(200, 50%, 75%)";
+const siteBackground = "#012";
 
 const theme = {
   colors: {
-    htmlBackground: "hsl(215, 100%, 10%)",
-    siteBackground: `linear-gradient(180deg,hsl(215, 100%, 10%) 0%,hsl(215, 50%, 20%) 100%)`,
+    htmlBackground: siteBackground,
+    siteBackground,
     primary,
-    primaryDarkened,
+    menuBackground: "#000911",
     scrollbar: {
       thumb: primary,
       track: "hsl(215, 15%, 20%)",
