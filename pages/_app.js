@@ -1,4 +1,5 @@
 import "normalize.css";
+import "prism-themes/themes/prism-a11y-dark.css";
 import globalStyles from "../styles/global";
 import Head from "next/head";
 

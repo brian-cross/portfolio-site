@@ -14,13 +14,6 @@
       "inline-react-svg", {
         "svgo": false
       }
-    ],
-    [
-      "prismjs", {
-      "languages": ["javascript"],
-      "theme": "a11y-dark",
-      "css": true
-    }
-  ]
+    ]
   ]
 }
