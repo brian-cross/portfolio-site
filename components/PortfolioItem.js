@@ -1,128 +1,114 @@
 import Image from "next/image";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { SplitText } from "gsap/dist/SplitText";
-import { useEffect, useRef } from "react";
+import spacing from "../styles/spacing";
+import theme from "../styles/theme";
 
-gsap.registerPlugin(ScrollTrigger, SplitText);
-
-export default function PortfolioItem({ imgSrc, heading, description, link }) {
-  const itemRef = useRef(null);
-  const mockupRef = useRef(null);
-  const headingRef = useRef(null);
-  const paragraphRef = useRef(null);
-  const linkRef = useRef(null);
-
-  useEffect(() => {
-    const styleTag = document.createElement("style");
-    const clippingBoxClass = `split-text-clipping-box-${Math.floor(
-      Math.random() * 100000
-    )}`;
-    styleTag.innerText = `.${clippingBoxClass} { overflow: hidden; }`;
-
-    document.querySelector("head").appendChild(styleTag);
-
-    const split = new SplitText(paragraphRef.current, {
-      type: "words chars",
-      wordsClass: clippingBoxClass,
-    });
-
-    const triggerDefaults = {
-      start: "top bottom",
-      end: "top 70%",
-      toggleActions: "none play reverse none",
-    };
-
-    gsap.from(mockupRef.current, {
-      autoAlpha: 0,
-      scale: 1.1,
-      ease: "power1.out",
-      duration: 1,
-      scrollTrigger: {
-        trigger: mockupRef.current,
-        ...triggerDefaults,
-      },
-    });
-
-    gsap.from(headingRef.current, {
-      autoAlpha: 0,
-      scale: 1.1,
-      ease: "power1.out",
-      duration: 1,
-      scrollTrigger: {
-        trigger: headingRef.current,
-        ...triggerDefaults,
-      },
-    });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: paragraphRef.current,
-          ...triggerDefaults,
-        },
-      })
-      .from(split.chars, {
-        yPercent: -100,
-        stagger: {
-          amount: 1.2,
-        },
-      })
-      .from(linkRef.current, {
-        autoAlpha: 0,
-        scale: 1.1,
-        transformOrigin: "top center",
-        ease: "power1.out",
-        duration: 1,
-      });
-  }, []);
+export default function PortfolioItem({
+  heading,
+  imgSrc,
+  description,
+  link,
+  tags,
+}) {
   return (
     <>
-      <div className="portfolio-item" ref={itemRef}>
-        <div className="mockup" ref={mockupRef}>
-          <Image src={imgSrc} width={1200} height={800} />
+      <div className="portfolio-item">
+        <div className="graphic">
+          <h2>
+            <span className="heading">{heading}</span>
+          </h2>
+          <div className="image">
+            <Image src={imgSrc} width={700} height={467} />
+          </div>
+          {tags ? (
+            <div className="tags">
+              {tags.map(tag => (
+                <span className="tag">{tag}</span>
+              ))}
+            </div>
+          ) : null}
         </div>
-        <div className="description">
-          <h2 ref={headingRef}>{heading}</h2>
-          <p ref={paragraphRef}>{description}</p>
-          <a href={link} target="_blank" ref={linkRef}>
-            View Project
-          </a>
+        <div className="text">
+          <div className="description">
+            <p>{description}</p>
+          </div>
+          <div className="link">
+            <a href={link} target="_blank">
+              View Project{" "}
+              <img src="/external-link-alt-solid.svg" height="16"></img>
+            </a>
+          </div>
         </div>
       </div>
       <style jsx>
         {`
           .portfolio-item {
             display: flex;
-            flex-wrap: wrap-reverse;
-            align-items: center;
-            justify-content: space-evenly;
-            width: 100%;
-            margin: 4rem 0;
-            z-index: 1;
-
-            .mockup,
-            .description {
-              padding: 3rem 2rem;
-              flex: 1 1 32rem;
-              max-width: 50rem;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: space-between;
+            @media screen and (min-width: 1000px) {
+              flex-direction: row;
             }
 
-            .mockup {
-              //background: rgba($color: #fff, $alpha: 0.8);
-            }
+            .graphic {
+              position: relative;
+              flex-shrink: 1;
 
-            .description {
               h2 {
-                display: inline-block;
-                margin: 0 0 3rem;
+                margin: 0;
+
+                .heading {
+                  position: absolute;
+                  left: 5%;
+                  top: -0.6em;
+                  z-index: 1;
+                  padding: 0 0.5em;
+                  border-radius: 0.25em;
+                }
               }
 
-              a {
-                display: inline-block;
-                margin-top: 3rem;
+              .tags {
+                position: absolute;
+                right: 5%;
+                bottom: -0.4em;
+              }
+
+              .tag {
+                padding: 0.25em 1em;
+                border-radius: 0.5em;
+              }
+
+              .tag + .tag {
+                margin-left: 1em;
+              }
+            }
+
+            .text {
+              color: ${theme.colors.white};
+              flex-shrink: 1;
+              margin-top: 5vh;
+              max-width: ${spacing.portfolioImageWidth};
+              display: flex;
+              flex-direction: column;
+              justify-content: space-evenly;
+              @media screen and (min-width: 1000px) {
+                flex-grow: 1;
+                flex-basis: 40rem;
+                margin-top: 0;
+                margin-left: 5vw;
+              }
+
+              .link {
                 font-weight: bold;
               }
+            }
+
+            .heading,
+            .tag {
+              text-transform: uppercase;
+              font-weight: bold;
+              color: ${theme.colors.white};
+              background: ${theme.colors.mediumDark};
             }
           }
         `}
