@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import spacing from "../styles/spacing";
 import theme from "../styles/theme";
 
@@ -21,8 +23,10 @@ export default function PortfolioItem({
           </div>
           {tags ? (
             <div className="tags">
-              {tags.map(tag => (
-                <span className="tag">{tag}</span>
+              {tags.map((tag, i) => (
+                <span className="tag" key={i}>
+                  {tag}
+                </span>
               ))}
             </div>
           ) : null}
@@ -33,8 +37,7 @@ export default function PortfolioItem({
           </div>
           <div className="link">
             <a href={link} target="_blank">
-              View Project{" "}
-              <img src="/external-link-alt-solid.svg" height="16"></img>
+              View Project <FontAwesomeIcon icon={faExternalLinkAlt} />
             </a>
           </div>
         </div>
