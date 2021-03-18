@@ -81,8 +81,8 @@ export default function Header({ animateIn, onVisible }) {
       <style jsx>
         {`
           header {
-            position: fixed;
-            top: 0;
+            //position: fixed;
+            //top: 0;
             width: 100%;
             z-index: 1000;
 
