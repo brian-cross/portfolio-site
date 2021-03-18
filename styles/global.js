@@ -20,7 +20,6 @@ export default css.global`
   body {
     color: ${theme.colors.primary};
     background: ${theme.colors.siteBackground};
-    background-attachment: fixed;
     font-family: ${theme.fontFamily};
     user-select: none;
   }
