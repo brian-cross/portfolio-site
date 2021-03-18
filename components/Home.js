@@ -8,6 +8,7 @@ gsap.registerPlugin(DrawSVGPlugin, ScrollTrigger);
 
 export default function Home({ onVisible }) {
   useEffect(() => {
+    gsap.set(".animated-svg-text > path", { visibility: "hidden", opacity: 1 });
     gsap.from(".animated-svg-text > path", {
       drawSVG: 0,
       autoAlpha: 0,
@@ -123,7 +124,7 @@ export default function Home({ onVisible }) {
               top: -3rem;
 
               path {
-                visibility: hidden;
+                opacity: 0;
                 fill: none;
                 stroke: currentColor;
               }
