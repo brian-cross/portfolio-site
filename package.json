@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "babel-plugin-inline-react-svg": "^2.0.1",
+    "babel-plugin-prismjs": "^2.0.1",
     "node-sass": "^5.0.0",
     "styled-jsx-plugin-sass": "^1.0.0"
   }

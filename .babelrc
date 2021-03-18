@@ -1,8 +1,7 @@
 {
   "presets": [
     [
-      "next/babel",
-      {
+      "next/babel", {
         "styled-jsx": {
           "plugins": ["styled-jsx-plugin-sass"]
         }
@@ -12,10 +11,16 @@
 
   "plugins": [
     [
-      "inline-react-svg",
-      {
+      "inline-react-svg", {
         "svgo": false
       }
-    ]
+    ],
+    [
+      "prismjs", {
+      "languages": ["javascript"],
+      "theme": "a11y-dark",
+      "css": true
+    }
+  ]
   ]
 }
