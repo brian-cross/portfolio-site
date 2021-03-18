@@ -45,7 +45,7 @@ const MenuIcon = forwardRef((props, ref) => {
               width: 100%;
               height: 0.3125rem;
               height: calc(${spacing.headerIconWidth} / 8);
-              background: ${theme.colors.primary};
+              background: currentColor;
 
               &:first-of-type {
                 top: calc(${spacing.headerIconWidth} / 4);

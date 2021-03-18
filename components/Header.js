@@ -6,6 +6,7 @@ import CodePenIcon from "./CodePenIcon";
 import TwitterIcon from "./TwitterIcon";
 import MenuIcon from "./MenuIcon";
 import Menu from "../components/Menu";
+import theme from "../styles/theme";
 // import ScrollIndicator from "./ScrollIndicator";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -81,9 +82,10 @@ export default function Header({ animateIn, onVisible }) {
       <style jsx>
         {`
           header {
-            //position: fixed;
-            //top: 0;
+            position: fixed;
+            top: 0;
             width: 100%;
+            color: ${theme.colors.headerColor};
             z-index: 1000;
 
             .container {

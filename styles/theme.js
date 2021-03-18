@@ -10,6 +10,7 @@ const theme = {
     primary,
     white,
     mediumDark,
+    headerColor: white,
     menuBackground: "#000911",
     scrollbar: {
       thumb: primary,
