@@ -17,10 +17,10 @@ export default function Main() {
         onVisible={() => setHeaderVisible(true)}
       />
       <Home onVisible={() => setHomeVisible(true)} />
-      {headerVisible ? <ScrollPrompt /> : null}
+      {/* {headerVisible ? <ScrollPrompt /> : null} */}
       {headerVisible ? <Work /> : null}
-      {headerVisible ? <About /> : null}
       {headerVisible ? <Contact /> : null}
+      {headerVisible ? <About /> : null}
     </>
   );
 }
