@@ -69,6 +69,7 @@ export default function useAnimatedHeading() {
           {
             autoAlpha: 0,
             stagger: 0.03,
+            duration: 1.25,
           },
           "<+=0.5"
         );
