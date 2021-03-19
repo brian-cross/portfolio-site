@@ -32,7 +32,7 @@ export default function Header({ animateIn, onVisible }) {
   useEffect(() => {
     ScrollTrigger.create({
       start: "5% top",
-      end: "+=10%",
+      end: "+=5%",
       onLeave: () => {
         gsap.to([menuIcon.current, socialIcons.current], {
           autoAlpha: 0,
