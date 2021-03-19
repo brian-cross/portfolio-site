@@ -13,67 +13,58 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Header({ animateIn, onVisible }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [enableScroll, setEnableScroll] = useState(false);
-  const [scrollDirection, setScrollDirection] = useState(null);
 
   let menuIcon = useRef();
   let socialIcons = useRef();
 
   useEffect(() => {
     if (!animateIn) return;
-    gsap.from([socialIcons, menuIcon], {
+    gsap.from([menuIcon.current, socialIcons.current], {
       scale: 1.25,
       yPercent: 10,
       ease: "power1.inOut",
       autoAlpha: 0,
       duration: 1.5,
-      onComplete: () => {
-        onVisible();
-        setEnableScroll(true);
-      },
+      onComplete: onVisible,
     });
   }, [animateIn]);
 
   useEffect(() => {
-    if (!enableScroll) return;
     ScrollTrigger.create({
-      start: "top top",
-      end: `+=${document.body.clientHeight}`,
-      onUpdate: ({ direction }) => setScrollDirection(direction),
+      start: "5% top",
+      end: "+=10%",
+      onLeave: () => {
+        gsap.to([menuIcon.current, socialIcons.current], {
+          autoAlpha: 0,
+          yPercent: -50,
+          ease: "power3.out",
+          duration: 1,
+        });
+      },
+      onLeaveBack: () => {
+        gsap.to([menuIcon.current, socialIcons.current], {
+          autoAlpha: 1,
+          yPercent: 0,
+          ease: "power3.out",
+          duration: 1,
+        });
+      },
     });
-  }, [enableScroll]);
-
-  useEffect(() => {
-    if (scrollDirection === null) return;
-    if (scrollDirection === 1)
-      gsap.to([socialIcons, menuIcon], {
-        opacity: 0,
-        yPercent: -50,
-        duration: 1,
-        ease: "power1.out",
-      });
-    if (scrollDirection === -1)
-      gsap.to([socialIcons, menuIcon], {
-        opacity: 1,
-        yPercent: 0,
-        duration: 1,
-        ease: "power1.out",
-      });
-  }, [scrollDirection]);
+  }, []);
 
   return (
     <>
       <header>
         <div className="container">
           <Menu isOpen={menuOpen} />
-          <div className="social-icons" ref={node => (socialIcons = node)}>
+          <div className="social-icons" ref={socialIcons}>
             <TwitterIcon />
             <CodePenIcon />
             <GithubIcon />
           </div>
           <MenuIcon
             open={menuOpen}
-            ref={node => (menuIcon = node)}
+            ref={menuIcon}
             onClick={() => setMenuOpen(prev => !prev)}
           />
           {/* {enableScroll ? <ScrollIndicator /> : null} */}
