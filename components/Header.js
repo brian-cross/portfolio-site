@@ -14,8 +14,8 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Header({ animateIn, onVisible }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  let menuIcon = useRef();
-  let socialIcons = useRef();
+  const menuIcon = useRef();
+  const socialIcons = useRef();
 
   useEffect(() => {
     if (!animateIn) return;
