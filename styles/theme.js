@@ -8,6 +8,7 @@ const theme = {
     htmlBackground: siteBackground,
     siteBackground,
     primary,
+    accent: "hsl(35, 67%, 54%)",
     white,
     mediumDark,
     headerColor: white,
