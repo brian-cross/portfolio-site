@@ -51,6 +51,11 @@ export default css.global`
     font-size: 1.5rem;
   }
 
+  input,
+  textarea {
+    font-size: 16px;
+  }
+
   ul {
     list-style: none;
     margin: 0;
