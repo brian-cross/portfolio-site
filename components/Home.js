@@ -3,6 +3,7 @@ import { DrawSVGPlugin } from "gsap/dist/DrawSVGPlugin";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useEffect } from "react";
 import spacing from "../styles/spacing";
+import theme from "../styles/theme";
 
 gsap.registerPlugin(DrawSVGPlugin, ScrollTrigger);
 
@@ -126,7 +127,7 @@ export default function Home({ onVisible }) {
               path {
                 opacity: 0;
                 fill: none;
-                stroke: currentColor;
+                stroke: ${theme.colors.primary};
               }
             }
 
