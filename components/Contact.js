@@ -1,19 +1,54 @@
+import gsap from "gsap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import useAnimatedHeading from "../hooks/useAnimatedHeading";
 import spacing from "../styles/spacing";
 import theme from "../styles/theme";
 import PageSeparator from "./PageSeparator";
+import { useEffect, useRef } from "react";
+import { findIconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 export default function Contact() {
   const ref = useAnimatedHeading();
+  const form = useRef();
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    for (let entry of formData.entries()) console.log(entry[0], entry[1]);
-    e.target.reset();
-  }
+  useEffect(() => {
+    const inputs = form.current.querySelectorAll("input, textarea");
+    const labels = form.current.querySelectorAll("label");
+    const defaults = { duration: 0.3 };
+
+    form.current.addEventListener("submit", e => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      for (let entry of formData.entries()) console.log(entry[0], entry[1]);
+      e.target.reset();
+      labelDown(labels);
+    });
+
+    inputs.forEach((input, i) => {
+      input.addEventListener("focus", () => labelUp(labels[i]));
+
+      input.addEventListener("blur", () => {
+        if (input.value === "") labelDown(labels[i]);
+      });
+    });
+
+    function labelUp(label) {
+      gsap.to(label, {
+        yPercent: -250,
+        color: theme.colors.primary,
+        ...defaults,
+      });
+    }
+
+    function labelDown(label) {
+      gsap.to(label, {
+        yPercent: 0,
+        color: theme.colors.lightGrey,
+        ...defaults,
+      });
+    }
+  }, []);
 
   return (
     <>
@@ -22,7 +57,7 @@ export default function Contact() {
         <h1 ref={ref}>Get in touch</h1>
         <div className="content">
           <div className="form-container">
-            <form onSubmit={handleSubmit}>
+            <form ref={form}>
               <div className="column">
                 <div className="input-wrapper">
                   <label htmlFor="firstName">First Name</label>
