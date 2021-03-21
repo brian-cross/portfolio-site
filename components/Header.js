@@ -76,7 +76,6 @@ export default function Header({ animateIn, onVisible }) {
             position: fixed;
             top: 0;
             width: 100%;
-            color: ${theme.colors.headerColor};
             z-index: 1000;
 
             .container {

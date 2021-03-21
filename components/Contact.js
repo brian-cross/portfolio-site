@@ -108,7 +108,6 @@ export default function Contact() {
                       position: absolute;
                       top: 1.4rem;
                       left: 1.1rem;
-                      color: ${theme.colors.white};
                     }
 
                     input {
@@ -121,7 +120,6 @@ export default function Contact() {
 
                     input,
                     textarea {
-                      color: ${theme.colors.white};
                       background: ${theme.colors.mediumDark};
                       border: 2px solid ${theme.colors.primary};
                       border-radius: 0.5em;
