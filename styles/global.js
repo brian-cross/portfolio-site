@@ -70,7 +70,7 @@ export default css.global`
     -webkit-text-fill-color: white;
     -webkit-box-shadow: 0 0 0px 1000px hsl(215, 15%, 25%) inset;
     border: 2px solid ${theme.colors.primary};
-    //transition: background-color 5000s ease-in-out 0s;
+    transition: background-color 5000s ease-in-out 0s;
   }
 
   ul {
