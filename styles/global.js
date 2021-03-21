@@ -19,6 +19,7 @@ export default css.global`
 
   body {
     color: ${theme.colors.white};
+    caret-color: ${theme.colors.white};
     background: ${theme.colors.siteBackground};
     font-family: ${theme.fontFamily};
     user-select: none;
@@ -52,8 +53,13 @@ export default css.global`
     font-size: 1.5rem;
   }
 
+  label {
+    color: ${theme.colors.lightGrey};
+  }
+
   input,
   textarea {
+    color: ${theme.colors.white};
     font-size: 16px;
     outline: none;
   }
@@ -61,7 +67,7 @@ export default css.global`
   :-webkit-autofill,
   :-webkit-autofill:hover,
   :-webkit-autofill:focus {
-    -webkit-text-fill-color: ${theme.colors.white};
+    -webkit-text-fill-color: white;
     -webkit-box-shadow: 0 0 0px 1000px hsl(215, 15%, 25%) inset;
     border: 2px solid ${theme.colors.primary};
     //transition: background-color 5000s ease-in-out 0s;
