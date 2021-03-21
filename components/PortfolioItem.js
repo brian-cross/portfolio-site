@@ -87,7 +87,6 @@ export default function PortfolioItem({
             }
 
             .text {
-              color: ${theme.colors.white};
               flex-shrink: 1;
               margin-top: 5vh;
               max-width: ${spacing.portfolioImageWidth};
@@ -110,7 +109,6 @@ export default function PortfolioItem({
             .tag {
               text-transform: uppercase;
               font-weight: bold;
-              color: ${theme.colors.white};
               background: ${theme.colors.mediumDark};
             }
           }
