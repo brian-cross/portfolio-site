@@ -1,7 +1,7 @@
 const accent = "hsl(35, 67%, 54%)";
 const primary = "hsl(200, 50%, 75%)";
 const white = "white";
-const lightGrey = "#999";
+const lightGrey = "hsl(200, 25%, 75%)";
 const mediumDark = "hsl(215, 15%, 25%)";
 const menuBackground = "#000911";
 const siteBackground = "#012";
