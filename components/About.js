@@ -1,5 +1,3 @@
-import Prism from "prismjs";
-import { useEffect } from "react";
 import useAnimatedHeading from "../hooks/useAnimatedHeading";
 import spacing from "../styles/spacing";
 import PageSeparator from "./PageSeparator";
@@ -7,39 +5,31 @@ import PageSeparator from "./PageSeparator";
 export default function About() {
   const ref = useAnimatedHeading();
 
-  const aboutMe = `function aboutMe() {
-  return {
-    firstName: "Brian",
-    lastName: "Cross",
+  //   const aboutMe = `function aboutMe() {
+  //   return {
+  //     firstName: "Brian",
+  //     lastName: "Cross",
 
-    location: {
-      city: "Edmonton",
-      province: "Alberta",
-      country: "Canada",
-    },
+  //     location: {
+  //       city: "Edmonton",
+  //       province: "Alberta",
+  //       country: "Canada",
+  //     },
 
-    technologies: [
-      "HTML", "CSS", "JavaScript", "React", "Next.js", "SASS", "GSAP", "Framer Motion", "Node.js",
-    ],
+  //     technologies: [
+  //       "HTML", "CSS", "JavaScript", "React", "Next.js", "SASS", "GSAP", "Framer Motion", "Node.js",
+  //     ],
 
-    description: "Hey, I'm Brian. I'm a web developer from Canada. I love building beautiful, performant websites that are accessible to all users. I also enjoy programming fun and interesting user interfaces with animation libraries such as GSAP (GreenSock Animation Platform) and Framer Motion.",
-  };
-};`;
-
-  useEffect(() => {
-    Prism.highlightAll();
-  }, []);
+  //     description: "Hey, I'm Brian. I'm a web developer from Canada. I love building beautiful, performant websites that are accessible to all users. I also enjoy programming fun and interesting user interfaces with animation libraries such as GSAP (GreenSock Animation Platform) and Framer Motion.",
+  //   };
+  // };`;
 
   return (
     <>
       <section className="container about">
         <PageSeparator />
-        <h1 ref={ref}>About Me</h1>
-        <div className="content">
-          <pre>
-            <code className="language-js">{aboutMe}</code>
-          </pre>
-        </div>
+        <h1 ref={ref}>Hey, I'm Brian</h1>
+        <div className="content"></div>
       </section>
       <style jsx>
         {`
@@ -53,17 +43,6 @@ export default function About() {
 
             .content {
               flex-grow: 1;
-              display: flex;
-              align-items: center;
-            }
-
-            pre {
-              border-radius: 1rem;
-              max-width: 70rem;
-
-              code {
-                white-space: break-spaces;
-              }
             }
           }
         `}
