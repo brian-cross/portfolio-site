@@ -6,7 +6,7 @@ import spacing from "../styles/spacing";
 import theme from "../styles/theme";
 import PageSeparator from "./PageSeparator";
 import { useEffect, useRef } from "react";
-import { findIconDefinition } from "@fortawesome/fontawesome-svg-core";
+import ContactPageBackground from "./ContactPageBackground";
 
 export default function Contact() {
   const ref = useAnimatedHeading();
@@ -53,6 +53,7 @@ export default function Contact() {
   return (
     <>
       <section className="container contact">
+        <ContactPageBackground />
         <PageSeparator />
         <h1 ref={ref}>Get in touch</h1>
         <div className="content">

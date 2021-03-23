@@ -2,6 +2,7 @@ import spacing from "../styles/spacing";
 import PortfolioItem from "./PortfolioItem";
 import useAnimatedHeading from "../hooks/useAnimatedHeading";
 import PageSeparator from "./PageSeparator";
+import ProjectsPageBackground from "./ProjectsPageBackground";
 
 export default function Work() {
   const ref = useAnimatedHeading();
@@ -9,6 +10,7 @@ export default function Work() {
   return (
     <>
       <section className="container work">
+        <ProjectsPageBackground />
         <PageSeparator />
         <h1 ref={ref}>Projects</h1>
         <div className="portfolio-items">
