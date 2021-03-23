@@ -30,6 +30,8 @@ export default css.global`
   #__next {
     margin: 0;
     padding: 0;
+    height: 100vh;
+    height: -webkit-fill-available;
   }
 
   a {
