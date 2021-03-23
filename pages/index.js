@@ -16,9 +16,9 @@ export default function Main() {
         onVisible={() => setHeaderVisible(true)}
       />
       <Home onVisible={() => setHomeVisible(true)} />
+      {headerVisible ? <About /> : null}
       {headerVisible ? <Work /> : null}
       {headerVisible ? <Contact /> : null}
-      {headerVisible ? <About /> : null}
     </>
   );
 }
