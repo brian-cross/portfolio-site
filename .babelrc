@@ -7,13 +7,5 @@
         }
       }
     ]
-  ],
-
-  "plugins": [
-    [
-      "inline-react-svg", {
-        "svgo": false
-      }
-    ]
   ]
 }
