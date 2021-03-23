@@ -1,13 +1,17 @@
 import { gsap } from "gsap";
 import { DrawSVGPlugin } from "gsap/dist/DrawSVGPlugin";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import spacing from "../styles/spacing";
 import theme from "../styles/theme";
 
 gsap.registerPlugin(DrawSVGPlugin, ScrollTrigger);
 
 export default function Home({ onVisible }) {
+  const scrollPrompt = useRef();
+
   useEffect(() => {
     gsap.set(".animated-svg-text > path", { visibility: "hidden", opacity: 1 });
     gsap.from(".animated-svg-text > path", {
@@ -17,7 +21,15 @@ export default function Home({ onVisible }) {
       duration: 1.5,
       // duration: 0.1,
       ease: "power1.inOut",
-      onComplete: onVisible,
+      onComplete: () => {
+        onVisible();
+        gsap.from(scrollPrompt.current, {
+          yPercent: -10,
+          ease: "power1.inOut",
+          autoAlpha: 0,
+          duration: 1.5,
+        });
+      },
       stagger: {
         amount: 1.5,
         // amount: 0.1,
@@ -99,12 +111,26 @@ export default function Home({ onVisible }) {
             </svg>
           </div>
         </div>
+        <div className="scroll-prompt" ref={scrollPrompt}>
+          <p>
+            Scroll
+            <br />
+            {/* <FontAwesomeIcon icon={faChevronDown} /> */}
+            <svg aria-hidden="true" height="1em" viewBox="0 0 448 512">
+              <path
+                fill="currentColor"
+                d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"
+              ></path>
+            </svg>
+          </p>
+        </div>
       </section>
       <style jsx>
         {`
           .container {
             ${spacing.page}
             min-height: 100vh;
+            min-height: -webkit-fill-available;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -117,12 +143,12 @@ export default function Home({ onVisible }) {
               align-items: flex-start;
               justify-content: center;
               width: 100%;
+              padding: 30vh 0;
               flex-grow: 1;
             }
 
             .animated-svg-text {
               position: relative;
-              top: -3rem;
 
               path {
                 opacity: 0;
@@ -140,6 +166,17 @@ export default function Home({ onVisible }) {
             .heading-2 {
               height: clamp(2.75rem, 8vw, 8rem);
               stroke-width: 0.9;
+            }
+
+            .scroll-prompt {
+              visibility: hidden;
+              p {
+                margin: 0;
+                text-align: center;
+                text-transform: uppercase;
+                line-height: 1.75;
+                color: ${theme.colors.lightGrey};
+              }
             }
           }
         `}
