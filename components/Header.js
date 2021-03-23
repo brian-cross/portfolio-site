@@ -31,6 +31,7 @@ export default function Header({ animateIn, onVisible }) {
 
   useEffect(() => {
     ScrollTrigger.create({
+      trigger: "window",
       start: "5% top",
       end: "+=5%",
       onLeave: () => {
