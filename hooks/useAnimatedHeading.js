@@ -50,13 +50,9 @@ export default function useAnimatedHeading() {
 
       const tlText = gsap
         .timeline(tlDefaults)
-        .from(
-          textSplit.lines,
-          {
-            x: () => window.innerWidth * -0.02,
-          },
-          0
-        )
+        .from(textSplit.lines, {
+          x: () => window.innerWidth * -0.02,
+        })
         .from(
           textSplit.chars,
           {
@@ -76,13 +72,9 @@ export default function useAnimatedHeading() {
 
       const tlStroke = gsap
         .timeline(tlDefaults)
-        .from(
-          strokeTextSplit.lines,
-          {
-            x: () => window.innerWidth * -0.02,
-          },
-          0
-        )
+        .from(strokeTextSplit.lines, {
+          x: () => window.innerWidth * -0.02,
+        })
         .fromTo(
           strokeTextSplit.chars,
           { opacity: 0 },
@@ -90,20 +82,20 @@ export default function useAnimatedHeading() {
             opacity: 0.5,
             stagger: 0.03,
           },
-          "<+=1"
+          "<+=0.5"
         );
 
       ScrollTrigger.create({
         trigger: text,
-        start: "top bottom",
-        end: "top 80%",
+        start: "top 60%",
+        end: "top 50%",
         onLeave: () => {
           tlText.timeScale(1).play();
           tlStroke.timeScale(1).play();
         },
         onEnterBack: () => {
-          tlText.timeScale(2).reverse();
-          tlStroke.timeScale(2).reverse();
+          tlText.timeScale(1.75).reverse();
+          tlStroke.timeScale(2.5).reverse();
         },
       });
     }
