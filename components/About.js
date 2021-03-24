@@ -1,7 +1,13 @@
 import useAnimatedHeading from "../hooks/useAnimatedHeading";
+import useAnimatedSubHeading from "../hooks/useAnimatedSubHeading";
 import spacing from "../styles/spacing";
 import AboutPageBackground from "./AboutPageBackground";
 import PageSeparator from "./PageSeparator";
+
+function SubHeading({ children }) {
+  const ref = useAnimatedSubHeading();
+  return <h2 ref={ref}>{children}</h2>;
+}
 
 export default function About() {
   const ref = useAnimatedHeading();
@@ -13,15 +19,15 @@ export default function About() {
         <PageSeparator />
         <h1 ref={ref}>Hey, I'm Brian</h1>
         <div className="content">
-          <h2>I'm a front end web developer.</h2>
+          <SubHeading>I'm a front end web developer.</SubHeading>
           <p>
             I build fast-loading websites that scale seamlessly to all screen
             sizes and are accessible to all users. I use HTML, CSS and
             JavaScript along with third party packages such as React, SASS,
             GSAP, and Next.js.
-            <p>I follow a simple set of design philosophies:</p>
           </p>
-          <h2>Speed</h2>
+          <p>I follow a simple set of design philosophies:</p>
+          <SubHeading>Speed</SubHeading>
           <p>
             Websites need to be fast. Really fast. Otherwise your users will hit
             the back button. I host my projects on providers such as Netlify and
@@ -30,7 +36,7 @@ export default function About() {
             static content ahead of time to eliminate server delay. The end
             result is a site that loads and navigagtes almost instantly.
           </p>
-          <h2>Responsive Design</h2>
+          <SubHeading>Responsive Design</SubHeading>
           <p>
             The web is increasingly being accessed from mobile devices. It's
             critical that websites are designed from the ground up to scale and
@@ -39,7 +45,7 @@ export default function About() {
             device. Image assets are optimized for various sizes and resolutions
             which minimizes loading time and doesn't waste the user's bandwidth.
           </p>
-          <h2>Accessibility</h2>
+          <SubHeading>Accessibility</SubHeading>
           <p>
             A website is useless to someone if they can't navigate it or
             interact with it effectively due to a disability. I always have this
