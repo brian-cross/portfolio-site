@@ -16,8 +16,8 @@ export default function ProjectsPageBackground() {
         {`
           svg {
             position: absolute;
-            top: 2%;
-            height: 96%;
+            top: 0;
+            height: 95%;
             max-width: 100%;
             right: 1%;
           }
