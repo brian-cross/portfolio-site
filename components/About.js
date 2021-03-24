@@ -1,5 +1,6 @@
 import useAnimatedHeading from "../hooks/useAnimatedHeading";
 import spacing from "../styles/spacing";
+import AboutPageBackground from "./AboutPageBackground";
 import PageSeparator from "./PageSeparator";
 
 export default function About() {
@@ -8,6 +9,7 @@ export default function About() {
   return (
     <>
       <section className="container about">
+        <AboutPageBackground />
         <PageSeparator />
         <h1 ref={ref}>Hey, I'm Brian</h1>
         <div className="content">
@@ -15,7 +17,7 @@ export default function About() {
           <p>
             I build fast-loading websites that scale seamlessly to all screen
             sizes and are accessible to all users. I use HTML, CSS and
-            JavaScript along with third party solutions such as React, SASS,
+            JavaScript along with third party packages such as React, SASS,
             GSAP, and Next.js.
             <p>I follow a simple set of design philosophies:</p>
           </p>
