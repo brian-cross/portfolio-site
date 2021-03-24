@@ -13,36 +13,37 @@ export default function Home({ onVisible }) {
   const scrollPrompt = useRef();
 
   useEffect(() => {
-    gsap.set(".animated-svg-text > path", { visibility: "hidden", opacity: 1 });
     gsap.from(".animated-svg-text > path", {
       drawSVG: 0,
       autoAlpha: 0,
       xPercent: 25,
       duration: 1.5,
-      // duration: 0.1,
       ease: "power1.inOut",
       onComplete: () => {
         onVisible();
-        gsap.from(scrollPrompt.current, {
-          yPercent: -10,
-          ease: "power1.inOut",
-          autoAlpha: 0,
-          duration: 1.5,
-        });
+        revealScrollPrompt();
       },
       stagger: {
         amount: 1.5,
-        // amount: 0.1,
         from: "random",
         // onComplete: function () {
         //   gsap.to(this.targets()[0], {
-        //     fill: theme.colors.primaryDarkened,
+        //     fill: theme.colors.mediumDark,
         //     ease: "power1.inOut",
         //     duration: 1.5,
         //   });
         // },
       },
     });
+
+    function revealScrollPrompt() {
+      gsap.from(scrollPrompt.current, {
+        yPercent: -10,
+        ease: "power1.inOut",
+        autoAlpha: 0,
+        duration: 1.5,
+      });
+    }
 
     // ScrollTrigger.create({
     //   trigger: ".home",
@@ -54,14 +55,37 @@ export default function Home({ onVisible }) {
     // gsap.to([".heading-1-wrapper", ".heading-2-wrapper"], {
     //   opacity: 0,
     //   xPercent: -100,
-    //   ease: "power2.out",
+    //   ease: "power3.out",
     //   scrollTrigger: {
     //     trigger: ".home",
-    //     start: "10% top",
-    //     end: "bottom top",
+    //     start: "top",
+    //     end: "bottom",
     //     scrub: 1,
     //   },
     // });
+
+    gsap.to(".headings", {
+      yPercent: 30,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".home",
+        start: "top",
+        end: "bottom",
+        scrub: true,
+      },
+    });
+
+    gsap.to(scrollPrompt.current, {
+      opacity: 0,
+      ease: "power1.inOut",
+      duration: 1,
+      scrollTrigger: {
+        trigger: scrollPrompt.current,
+        start: "bottom 95%",
+        end: "bottom 90%",
+        toggleActions: "none play none reverse",
+      },
+    });
   }, []);
 
   return (
@@ -151,7 +175,7 @@ export default function Home({ onVisible }) {
               position: relative;
 
               path {
-                opacity: 0;
+                visibility: hidden;
                 fill: none;
                 stroke: ${theme.colors.primary};
               }
@@ -170,6 +194,7 @@ export default function Home({ onVisible }) {
 
             .scroll-prompt {
               visibility: hidden;
+
               p {
                 margin: 0;
                 text-align: center;
