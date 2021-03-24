@@ -15,11 +15,8 @@ export default function PageSeparator() {
 
     ScrollTrigger.create({
       trigger: target,
-      start: "top bottom",
-      end: "top top",
+      start: "top 50%",
       onEnter: show,
-      onLeave: hide,
-      onEnterBack: show,
       onLeaveBack: hide,
     });
 
@@ -28,7 +25,7 @@ export default function PageSeparator() {
     }
 
     function hide() {
-      gsap.to(target, { scaleX: 0 });
+      gsap.to(target, { scaleX: 0, ease: "power3.out", duration: 2 });
     }
   }, []);
 
@@ -38,10 +35,10 @@ export default function PageSeparator() {
       <style jsx>
         {`
           div {
-            width: 100vw;
+            width: 95vw;
             height: 1px;
             position: absolute;
-            left: -5vw;
+            left: 0;
             top: 0;
             background: ${theme.colors.mediumDark};
           }
