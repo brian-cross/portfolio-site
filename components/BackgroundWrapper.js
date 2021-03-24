@@ -29,6 +29,8 @@ export default function BackgroundWrapper({ children }) {
       <style jsx>
         {`
           .wrapper {
+            display: flex;
+            align-items: center;
             position: absolute;
             visibility: hidden;
             overflow: hidden;
@@ -43,7 +45,9 @@ export default function BackgroundWrapper({ children }) {
             }
 
             .parallax {
+              flex-grow: 1;
               height: 100%;
+              max-height: 100vh;
             }
           }
         `}
