@@ -22,6 +22,7 @@ export default css.global`
     caret-color: ${theme.colors.white};
     background: ${theme.colors.siteBackground};
     font-family: ${theme.fontFamily};
+    line-height: 1.6;
     user-select: none;
   }
 
@@ -47,6 +48,7 @@ export default css.global`
   }
 
   h2 {
+    color: ${theme.colors.lightGrey};
     font-size: clamp(2.4rem, 5vw, 4rem);
   }
 
