@@ -78,6 +78,7 @@ export default function Header({ animateIn, onVisible }) {
             top: 0;
             width: 100%;
             z-index: 1000;
+            color: ${theme.colors.lightGrey};
 
             .container {
               display: flex;
