@@ -87,13 +87,13 @@ export default function useAnimatedHeading() {
 
       ScrollTrigger.create({
         trigger: text,
-        start: "top 60%",
-        end: "top 50%",
+        start: "top 80%",
+        end: "top 70%",
         onLeave: () => {
           tlText.timeScale(1).play();
           tlStroke.timeScale(1).play();
         },
-        onEnterBack: () => {
+        onLeaveBack: () => {
           tlText.timeScale(1.75).reverse();
           tlStroke.timeScale(2.5).reverse();
         },

@@ -15,18 +15,15 @@ export default function PageSeparator() {
 
     ScrollTrigger.create({
       trigger: target,
-      start: "top 50%",
-      onEnter: show,
-      onLeaveBack: hide,
+      start: "top 80%",
+      end: "top 70%",
+      onLeave: () => {
+        gsap.to(target, { scaleX: 1, ease: "power3.out", duration: 2 });
+      },
+      onLeaveBack: () => {
+        gsap.to(target, { scaleX: 0, ease: "power3.out", duration: 2 });
+      },
     });
-
-    function show() {
-      gsap.to(target, { scaleX: 1, ease: "power3.out", duration: 2 });
-    }
-
-    function hide() {
-      gsap.to(target, { scaleX: 0, ease: "power3.out", duration: 2 });
-    }
   }, []);
 
   return (
