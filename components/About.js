@@ -1,63 +1,67 @@
-import useAnimatedHeading from "../hooks/useAnimatedHeading";
-import useAnimatedSubHeading from "../hooks/useAnimatedSubHeading";
-import useAnimatedParagraph from "../hooks/useAnimatedParagraph";
 import spacing from "../styles/spacing";
+import useAnimatedHeading from "../hooks/useAnimatedHeading";
 import AboutPageBackground from "./AboutPageBackground";
+import useAnimatedSection from "../hooks/useAnimatedSection";
 import PageSeparator from "./PageSeparator";
 
-function SubHeading({ children }) {
-  const ref = useAnimatedSubHeading();
-  return <h2 ref={ref}>{children}</h2>;
-}
-
-function Paragraph({ children }) {
-  const ref = useAnimatedParagraph();
-  return <p ref={ref}>{children}</p>;
+function AnimatedSection({ children }) {
+  const ref = useAnimatedSection();
+  return <div ref={ref}>{children}</div>;
 }
 
 export default function About() {
-  const ref = useAnimatedHeading();
+  const heading = useAnimatedHeading();
 
   return (
     <>
       <section className="container about">
         <AboutPageBackground />
         <PageSeparator />
-        <h1 ref={ref}>Hey, I'm Brian</h1>
+        <h1 ref={heading}>Hey, I'm Brian</h1>
         <div className="content">
-          <SubHeading>I'm a front end web developer.</SubHeading>
-          <Paragraph>
-            I build fast-loading websites that scale seamlessly to all screen
-            sizes and are accessible to all users. I use HTML, CSS and
-            JavaScript along with third party packages such as React, SASS,
-            GSAP, and Next.js.
-          </Paragraph>
-          <Paragraph>I follow a simple set of design philosophies:</Paragraph>
-          <SubHeading>Speed</SubHeading>
-          <Paragraph>
-            Websites need to be fast. Really fast. Otherwise your users will hit
-            the back button. I host my projects on providers such as Netlify and
-            Vercel who leverage global content delivery networks to ensure your
-            content is served with minimal delay. Next.js also pre-generates any
-            static content ahead of time to eliminate server delay. The end
-            result is a site that loads and navigagtes almost instantly.
-          </Paragraph>
-          <SubHeading>Responsive Design</SubHeading>
-          <Paragraph>
-            The web is increasingly being accessed from mobile devices. It's
-            critical that websites are designed from the ground up to scale and
-            adjust their layout to all screen sizes. I use mobile-first design
-            and smooth scaling techniques to seamlessly fit my designs to any
-            device. Image assets are optimized for various sizes and resolutions
-            which minimizes loading time and doesn't waste the user's bandwidth.
-          </Paragraph>
-          <SubHeading>Accessibility</SubHeading>
-          <Paragraph>
-            A website is useless to someone if they can't navigate it or
-            interact with it effectively due to a disability. I always have this
-            in mind when building a site and I regularly run audits to ensure
-            accessibility standards are met.
-          </Paragraph>
+          <AnimatedSection>
+            <h2>I'm a front end web developer.</h2>
+            <p>
+              I build fast-loading websites that scale seamlessly to all screen
+              sizes and are accessible to all users. I use HTML, CSS and
+              JavaScript along with third party packages such as React, SASS,
+              GSAP, and Next.js.
+            </p>
+            <p>I follow a simple set of design philosophies:</p>
+          </AnimatedSection>
+          <AnimatedSection>
+            <h2>Speed</h2>
+            <p>
+              Websites need to be fast. Really fast. Otherwise your users will
+              hit the back button. I host my projects on providers such as
+              Netlify and Vercel who leverage global content delivery networks
+              to ensure your content is served with minimal delay. Next.js also
+              pre-generates any static content ahead of time to eliminate server
+              delay. The end result is a site that loads and navigagtes almost
+              instantly.
+            </p>
+          </AnimatedSection>
+          <AnimatedSection>
+            <h2>Responsive Design</h2>
+            <p>
+              The web is increasingly being accessed from mobile devices. It's
+              critical that websites are designed from the ground up to scale
+              and adjust their layout to all screen sizes. I use mobile-first
+              design and smooth scaling techniques to seamlessly fit my designs
+              to any device. Image assets are optimized for various sizes and
+              resolutions which minimizes loading time and doesn't waste the
+              user's bandwidth.
+            </p>
+          </AnimatedSection>
+          <AnimatedSection>
+            <h2>Accessibility</h2>
+            <p>
+              A website is useless to someone if they can't navigate it or
+              interact with it effectively due to a disability. I always have
+              this in mind when building a site and I regularly run audits to
+              ensure accessibility standards are met.
+            </p>
+          </AnimatedSection>
         </div>
       </section>
       <style jsx>
