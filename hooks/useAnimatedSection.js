@@ -41,7 +41,7 @@ export default function useAnimatedSection() {
       start: "top 80%",
       end: "top 70%",
       onLeave: () => tl.timeScale(1).play(),
-      onLeaveBack: () => tl.timeScale(3).reverse(),
+      onLeaveBack: () => tl.timeScale(2).reverse(),
     });
   }, []);
 
