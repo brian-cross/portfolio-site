@@ -10,8 +10,12 @@ export default function useAnimatedSection() {
 
   useEffect(() => {
     const target = ref.current;
-    const headingSplit = new SplitText(target.querySelector("h2"));
-    const text = target.querySelectorAll("p");
+    const headingSplit = new SplitText(target.querySelector("h2"), {
+      type: "chars",
+    });
+    const textSplit = new SplitText(target.querySelectorAll("p"), {
+      type: "lines",
+    });
 
     const tl = gsap
       .timeline({ ease: "power2.out", paused: true })
@@ -21,12 +25,13 @@ export default function useAnimatedSection() {
         stagger: 0.03,
       })
       .from(
-        text,
+        textSplit.lines,
         {
           opacity: 0,
-          scale: 0.95,
-          yPercent: -10,
-          duration: 1,
+          rotate: 1.5,
+          yPercent: 100,
+          duration: 0.8,
+          stagger: 0.1,
         },
         "<+1"
       );
@@ -36,7 +41,7 @@ export default function useAnimatedSection() {
       start: "top 80%",
       end: "top 70%",
       onLeave: () => tl.timeScale(1).play(),
-      onLeaveBack: () => tl.timeScale(5).reverse(),
+      onLeaveBack: () => tl.timeScale(3).reverse(),
     });
   }, []);
 
