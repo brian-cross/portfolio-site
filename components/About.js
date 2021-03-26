@@ -26,31 +26,27 @@ export default function About() {
               sizes and are accessible to all users. I use HTML, CSS and
               JavaScript along with third party packages such as React, SASS,
               GSAP, and Next.js.
+              <br />
+              <br />I follow a simple set of design philosophies:
             </p>
-            <p>I follow a simple set of design philosophies:</p>
           </AnimatedSection>
           <AnimatedSection>
             <h2>Speed</h2>
             <p>
-              Websites need to be fast. Really fast. Otherwise your users will
-              hit the back button. I host my projects on providers such as
-              Netlify and Vercel who leverage global content delivery networks
-              to ensure your content is served with minimal delay. Next.js also
-              pre-generates any static content ahead of time to eliminate server
-              delay. The end result is a site that loads and navigagtes almost
-              instantly.
+              I host my projects on providers such as Netlify and Vercel who
+              leverage global content delivery networks to ensure your content
+              is served with minimal delay. Next.js also pre-generates any
+              static content ahead of time to eliminate server lag. The end
+              result is a site that loads and navigagtes almost instantly.
             </p>
           </AnimatedSection>
           <AnimatedSection>
             <h2>Responsive Design</h2>
             <p>
-              The web is increasingly being accessed from mobile devices. It's
-              critical that websites are designed from the ground up to scale
-              and adjust their layout to all screen sizes. I use mobile-first
-              design and smooth scaling techniques to seamlessly fit my designs
-              to any device. Image assets are optimized for various sizes and
-              resolutions which minimizes loading time and doesn't waste the
-              user's bandwidth.
+              I use mobile-first design and smooth scaling techniques to
+              seamlessly fit my designs to any device. Image assets are
+              optimized for various sizes and resolutions which minimizes
+              loading time and doesn't waste the user's bandwidth.
             </p>
           </AnimatedSection>
           <AnimatedSection>
