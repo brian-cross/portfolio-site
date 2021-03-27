@@ -1,6 +1,7 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useEffect, useRef } from "react";
+import theme from "../styles/theme";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,12 +11,11 @@ export default function BackgroundWrapper({ children }) {
   useEffect(() => {
     const target = ref.current;
     gsap.to(target, {
-      y: -(target.clientWidth + window.innerHeight / 10),
-      ease: "none",
+      y: -(target.clientWidth + target.clientHeight / 5),
+      ease: "power2.in",
       scrollTrigger: {
         trigger: target,
         scrub: 1,
-        markers: true,
       },
     });
   }, []);
@@ -53,15 +53,15 @@ export default function BackgroundWrapper({ children }) {
               span {
                 //margin: 0.25em 0;
                 line-height: 0.8;
-                font-size: 15vmax;
+                font-size: 25rem;
                 font-weight: bold;
                 white-space: nowrap;
                 text-transform: uppercase;
-                -webkit-text-stroke: 0.01em currentColor;
+                -webkit-text-stroke: 2px ${theme.colors.lightGrey};
                 -webkit-text-fill-color: rgba(0, 0, 0, 0);
-                opacity: 0.05;
+                opacity: 0.2;
                 position: absolute;
-                top: 10vh;
+                top: 5rem;
                 left: 100%;
                 transform-origin: top left;
                 transform: rotate(90deg);
