@@ -11,7 +11,7 @@ export default function useAnimatedSection() {
   useEffect(() => {
     const target = ref.current;
     const headingSplit = new SplitText(target.querySelector("h2"), {
-      type: "chars",
+      type: "chars, words",
     });
     const textSplit = new SplitText(target.querySelectorAll("p"), {
       type: "lines",
