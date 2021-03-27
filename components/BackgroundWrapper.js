@@ -10,11 +10,12 @@ export default function BackgroundWrapper({ children }) {
   useEffect(() => {
     const target = ref.current;
     gsap.to(target, {
-      yPercent: -100,
+      y: -(target.clientWidth + window.innerHeight / 10),
       ease: "none",
       scrollTrigger: {
         trigger: target,
         scrub: 1,
+        markers: true,
       },
     });
   }, []);
@@ -50,9 +51,9 @@ export default function BackgroundWrapper({ children }) {
               //max-height: 100vh;
 
               span {
-                margin: 1em 0;
+                //margin: 0.25em 0;
                 line-height: 0.8;
-                font-size: 20vw;
+                font-size: 15vmax;
                 font-weight: bold;
                 white-space: nowrap;
                 text-transform: uppercase;
@@ -60,7 +61,7 @@ export default function BackgroundWrapper({ children }) {
                 -webkit-text-fill-color: rgba(0, 0, 0, 0);
                 opacity: 0.05;
                 position: absolute;
-                top: 0.1em;
+                top: 10vh;
                 left: 100%;
                 transform-origin: top left;
                 transform: rotate(90deg);
