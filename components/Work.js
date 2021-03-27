@@ -24,24 +24,6 @@ export default function Work() {
             tags={["React", "WebRTC", "Node.JS"]}
             link="https://www.facecall.app"
           />
-          {/* <PortfolioItem
-            imgSrc="/laptop-phone-mockup-facecall.png"
-            heading="FaceCall"
-            description="FaceCall is a browser based video calling app. Built with React
-              and WebRTC on the frontend and a custom Node.JS server on the
-              backend. Uses WebRTC signaling infrastructure from Twilio for
-              initiating the peer to peer video link."
-            link="https://www.facecall.app"
-          />
-          <PortfolioItem
-            imgSrc="/laptop-phone-mockup-facecall.png"
-            heading="FaceCall"
-            description="FaceCall is a browser based video calling app. Built with React
-              and WebRTC on the frontend and a custom Node.JS server on the
-              backend. Uses WebRTC signaling infrastructure from Twilio for
-              initiating the peer to peer video link."
-            link="https://www.facecall.app"
-          /> */}
         </div>
       </section>
       <style jsx>
@@ -55,11 +37,7 @@ export default function Work() {
             flex-direction: column;
 
             .portfolio-items {
-              flex-grow: 1;
-              margin-top: 5vh;
-              display: flex;
-              align-items: center;
-              justify-content: center;
+              margin-top: 10vh;
             }
           }
         `}
