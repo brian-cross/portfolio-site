@@ -57,6 +57,10 @@ export default function Contact() {
         <PageSeparator />
         <h1 ref={ref}>Get in touch</h1>
         <div className="content">
+          <p>
+            Let’s discuss your project! Send me a message and I’ll get back to
+            you within one business day.
+          </p>
           <div className="form-container">
             <form ref={form}>
               <div className="column">
@@ -90,10 +94,6 @@ export default function Contact() {
               </div>
             </form>
           </div>
-          <p>
-            Let’s discuss your project! Send me a message and I’ll get back to
-            you within one business day.
-          </p>
         </div>
       </section>
       <style jsx>
@@ -109,15 +109,15 @@ export default function Contact() {
             .content {
               margin: 5vh -1em -1em;
               display: flex;
-              flex-wrap: wrap-reverse;
+              flex-direction: column;
+              max-width: 50rem;
 
               & > * {
                 margin: 0 1em 2em;
               }
 
               p {
-                flex-grow: 1;
-                flex-basis: 20rem;
+                max-width: 75ch;
               }
 
               .form-container {
