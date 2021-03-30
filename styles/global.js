@@ -19,7 +19,7 @@ export default css.global`
 
   body {
     color: ${theme.colors.white};
-    caret-color: ${theme.colors.white};
+    caret-color: ${theme.colors.lightGrey};
     background: ${theme.colors.siteBackground};
     font-family: ${theme.fontFamily};
     line-height: 1.6;
@@ -58,6 +58,7 @@ export default css.global`
 
   label {
     color: ${theme.colors.lightGrey};
+    font-size: 1.25rem;
   }
 
   input,
