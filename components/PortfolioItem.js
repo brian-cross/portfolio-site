@@ -1,8 +1,14 @@
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { SplitText } from "gsap/dist/SplitText";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import spacing from "../styles/spacing";
 import theme from "../styles/theme";
+
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 export default function PortfolioItem({
   heading,
@@ -11,10 +17,55 @@ export default function PortfolioItem({
   link,
   tags,
 }) {
+  const graphicRef = useRef();
+  const textRef = useRef();
+
+  useEffect(() => {
+    const graphic = graphicRef.current;
+    const text = new SplitText(textRef.current.querySelectorAll("p, a"), {
+      type: "lines",
+    });
+
+    const graphicTween = gsap.from(graphic, {
+      autoAlpha: 0,
+      //yPercent: -10,
+      scale: 1.05,
+      duration: 1,
+      ease: "power1.inOut",
+      paused: true,
+    });
+
+    const textTween = gsap.from(text.lines, {
+      opacity: 0,
+      rotate: 1.5,
+      yPercent: 100,
+      duration: 0.8,
+      stagger: 0.1,
+      ease: "power2.out",
+      paused: true,
+    });
+
+    ScrollTrigger.create({
+      trigger: graphic,
+      start: "top 80%",
+      end: "top 70%",
+      onLeave: () => graphicTween.timeScale(1).play(),
+      onLeaveBack: () => graphicTween.timeScale(2).reverse(),
+    });
+
+    ScrollTrigger.create({
+      trigger: textRef.current,
+      start: "top 80%",
+      end: "top 70%",
+      onLeave: () => textTween.timeScale(1).play(),
+      onLeaveBack: () => textTween.timeScale(2).reverse(),
+    });
+  }, []);
+
   return (
     <>
       <div className="portfolio-item">
-        <div className="graphic">
+        <div className="graphic" ref={graphicRef}>
           <h2>
             <span className="heading">{heading}</span>
           </h2>
@@ -31,7 +82,7 @@ export default function PortfolioItem({
             </div>
           ) : null}
         </div>
-        <div className="text">
+        <div className="text" ref={textRef}>
           <div className="description">
             <p>{description}</p>
           </div>
@@ -48,6 +99,7 @@ export default function PortfolioItem({
             display: flex;
             align-items: flex-start;
             flex-direction: column;
+            margin-top: 15vh;
 
             .graphic {
               position: relative;
