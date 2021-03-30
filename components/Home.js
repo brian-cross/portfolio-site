@@ -26,13 +26,6 @@ export default function Home({ onVisible }) {
       stagger: {
         amount: 1.5,
         from: "random",
-        // onComplete: function () {
-        //   gsap.to(this.targets()[0], {
-        //     fill: theme.colors.mediumDark,
-        //     ease: "power1.inOut",
-        //     duration: 1.5,
-        //   });
-        // },
       },
     });
 
@@ -45,45 +38,39 @@ export default function Home({ onVisible }) {
       });
     }
 
-    // ScrollTrigger.create({
-    //   trigger: ".home",
-    //   start: "top top",
-    //   end: "bottom top",
-    //   pin: ".headings",
-    // });
-
-    // gsap.to([".heading-1-wrapper", ".heading-2-wrapper"], {
-    //   opacity: 0,
-    //   xPercent: -100,
-    //   ease: "power3.out",
-    //   scrollTrigger: {
-    //     trigger: ".home",
-    //     start: "top",
-    //     end: "bottom",
-    //     scrub: 1,
-    //   },
-    // });
-
-    gsap.to(".headings", {
-      yPercent: 30,
-      ease: "none",
+    gsap.to([".heading-1-wrapper", ".heading-2-wrapper"], {
+      opacity: 0,
+      xPercent: -120,
+      ease: "power1.out",
       scrollTrigger: {
         trigger: ".home",
         start: "top",
         end: "bottom",
-        scrub: true,
+        pin: ".headings",
+        scrub: 1,
       },
     });
 
+    // gsap.to(".headings", {
+    //   yPercent: 30,
+    //   ease: "none",
+    //   scrollTrigger: {
+    //     trigger: ".home",
+    //     start: "top",
+    //     end: "bottom",
+    //     scrub: true,
+    //   },
+    // });
+
     gsap.to(scrollPrompt.current, {
       opacity: 0,
-      ease: "power1.inOut",
-      duration: 1,
+      ease: "none",
       scrollTrigger: {
-        trigger: scrollPrompt.current,
-        start: "bottom 95%",
-        end: "bottom 90%",
-        toggleActions: "none play none reverse",
+        // trigger: ".home",
+        start: "bottom 98%",
+        end: "top 10%",
+        pin: scrollPrompt.current,
+        scrub: true,
       },
     });
   }, []);
@@ -155,10 +142,12 @@ export default function Home({ onVisible }) {
             ${spacing.page}
             min-height: 100vh;
             min-height: -webkit-fill-available;
+            padding: 0 5vw 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            background: ${theme.colors.sectionBgMain};
 
             .headings {
               position: relative;
