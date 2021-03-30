@@ -127,9 +127,18 @@ export default function Contact() {
             ${spacing.page}
             min-height: 100vh;
             position: relative;
+            margin-top: -5vmin;
             padding: 25vh 5vw;
             display: flex;
             flex-direction: column;
+            clip-path: polygon(
+              0% 2vmin,
+              65% 5vmin,
+              100% 0%,
+              100% 100%,
+              0% 100%
+            );
+            background: ${theme.colors.sectionBgContact};
 
             .content {
               margin: 5vh -1em -1em;

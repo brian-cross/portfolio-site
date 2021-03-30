@@ -65,13 +65,13 @@ export default function About() {
             ${spacing.page}
             min-height: 100vh;
             position: relative;
-            margin-top: -15vh;
+            margin-top: -5vmin;
             padding: 20vh 5vw;
             display: flex;
             flex-direction: column;
             clip-path: polygon(
-              0% 3vmin,
-              30% 7vmin,
+              0% 2vmin,
+              60% 4vmin,
               100% 0%,
               100% 100%,
               0% 100%

@@ -2,6 +2,7 @@ import spacing from "../styles/spacing";
 import PortfolioItem from "./PortfolioItem";
 import useAnimatedHeading from "../hooks/useAnimatedHeading";
 import ProjectsPageBackground from "./ProjectsPageBackground";
+import theme from "../styles/theme";
 
 export default function Work() {
   const ref = useAnimatedHeading();
@@ -42,9 +43,18 @@ export default function Work() {
             ${spacing.page}
             min-height: 100vh;
             position: relative;
-            padding: 25vh 5vw;
+            margin-top: -5vmin;
+            padding: 20vh 5vw;
             display: flex;
             flex-direction: column;
+            clip-path: polygon(
+              0% 2vmin,
+              30% 5vmin,
+              100% 0%,
+              100% 100%,
+              0% 100%
+            );
+            background: ${theme.colors.sectionBgWork};
 
             .portfolio-items {
               //margin-top: 10vh;
