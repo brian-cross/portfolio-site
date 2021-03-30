@@ -2,7 +2,7 @@ import spacing from "../styles/spacing";
 import useAnimatedHeading from "../hooks/useAnimatedHeading";
 import AboutPageBackground from "./AboutPageBackground";
 import useAnimatedSection from "../hooks/useAnimatedSection";
-import PageSeparator from "./PageSeparator";
+import theme from "../styles/theme";
 
 function AnimatedSection({ children }) {
   const ref = useAnimatedSection();
@@ -16,7 +16,6 @@ export default function About() {
     <>
       <section className="container about">
         <AboutPageBackground />
-        <PageSeparator />
         <h1 ref={heading}>Hey, I'm Brian</h1>
         <div className="content">
           <AnimatedSection>
@@ -66,17 +65,21 @@ export default function About() {
             ${spacing.page}
             min-height: 100vh;
             position: relative;
-            padding: 5vh 0;
+            margin-top: -15vh;
+            padding: 20vh 5vw;
             display: flex;
             flex-direction: column;
+            clip-path: polygon(
+              0% 3vmin,
+              30% 7vmin,
+              100% 0%,
+              100% 100%,
+              0% 100%
+            );
+            background: ${theme.colors.sectionBgAbout};
 
             .content {
-              flex-grow: 1;
               max-width: 75ch;
-
-              h2 {
-                font-size: clamp(2.5rem, 3.5vw, 3rem);
-              }
             }
           }
         `}
