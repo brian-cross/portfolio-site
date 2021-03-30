@@ -33,7 +33,7 @@ export default function useAnimatedSection() {
           duration: 0.8,
           stagger: 0.1,
         },
-        "<+1"
+        "<+0.6"
       );
 
     ScrollTrigger.create({
