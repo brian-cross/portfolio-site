@@ -1,16 +1,20 @@
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { SplitText } from "gsap/dist/SplitText";
+import { useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import useAnimatedHeading from "../hooks/useAnimatedHeading";
 import spacing from "../styles/spacing";
 import theme from "../styles/theme";
-import PageSeparator from "./PageSeparator";
-import { useEffect, useRef } from "react";
 import ContactPageBackground from "./ContactPageBackground";
+
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 export default function Contact() {
   const ref = useAnimatedHeading();
   const form = useRef();
+  const textRef = useRef();
 
   useEffect(() => {
     const inputs = form.current.querySelectorAll("input, textarea");
@@ -35,7 +39,7 @@ export default function Contact() {
 
     function labelUp(label) {
       gsap.to(label, {
-        yPercent: -250,
+        yPercent: -160,
         color: theme.colors.primary,
         ...defaults,
       });
@@ -50,14 +54,35 @@ export default function Contact() {
     }
   }, []);
 
+  useEffect(() => {
+    const text = new SplitText(textRef.current, { type: "lines" });
+
+    const textTween = gsap.from(text.lines, {
+      opacity: 0,
+      rotate: 1.5,
+      yPercent: 100,
+      duration: 0.8,
+      stagger: 0.1,
+      ease: "power2.out",
+      paused: true,
+    });
+
+    ScrollTrigger.create({
+      trigger: textRef.current,
+      start: "top 80%",
+      end: "top 70%",
+      onLeave: () => textTween.timeScale(1).play(),
+      onLeaveBack: () => textTween.timeScale(2).reverse(),
+    });
+  }, []);
+
   return (
     <>
       <section className="container contact">
         <ContactPageBackground />
-        <PageSeparator />
         <h1 ref={ref}>Get in touch</h1>
         <div className="content">
-          <p>
+          <p ref={textRef}>
             Let’s discuss your project! Send me a message and I’ll get back to
             you within one business day.
           </p>
@@ -102,7 +127,7 @@ export default function Contact() {
             ${spacing.page}
             min-height: 100vh;
             position: relative;
-            padding: 5vh 0;
+            padding: 25vh 5vw;
             display: flex;
             flex-direction: column;
 
@@ -133,16 +158,16 @@ export default function Contact() {
                   .column {
                     display: flex;
                     flex-direction: column;
-                    margin: -1em;
+                    margin: -1.5em;
 
                     .input-wrapper {
                       position: relative;
-                      margin: 1em;
+                      margin: 1.5em;
                     }
 
                     label {
                       position: absolute;
-                      top: 1.4rem;
+                      top: 0.9em;
                       left: 1.1rem;
                     }
 
@@ -157,8 +182,8 @@ export default function Contact() {
                     input,
                     textarea {
                       background: ${theme.colors.mediumDark};
-                      border: 2px solid ${theme.colors.primary};
-                      border-radius: 0.5em;
+                      border: 1px solid ${theme.colors.lightGrey};
+                      border-radius: 0.125em;
                       padding: 1rem;
                       width: 100%;
                     }
