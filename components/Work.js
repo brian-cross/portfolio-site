@@ -1,7 +1,6 @@
 import spacing from "../styles/spacing";
 import PortfolioItem from "./PortfolioItem";
 import useAnimatedHeading from "../hooks/useAnimatedHeading";
-import PageSeparator from "./PageSeparator";
 import ProjectsPageBackground from "./ProjectsPageBackground";
 
 export default function Work() {
