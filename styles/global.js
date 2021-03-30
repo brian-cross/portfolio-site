@@ -48,8 +48,7 @@ export default css.global`
   }
 
   h2 {
-    color: ${theme.colors.lightGrey};
-    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-size: clamp(2.5rem, 3.5vw, 3rem);
   }
 
   a,
