@@ -11,8 +11,19 @@ export default function Work() {
     <>
       <section className="container work">
         <ProjectsPageBackground />
-        <PageSeparator />
         <h1 ref={ref}>Projects</h1>
+        <div className="portfolio-items">
+          <PortfolioItem
+            imgSrc="/facecall-orange-cropped.png"
+            heading="FaceCall"
+            description="FaceCall is a browser based video calling app. Built with React
+              and WebRTC on the frontend and a custom Node.JS server on the
+              backend. Uses WebRTC signaling infrastructure from Twilio for
+              initiating the peer to peer video link."
+            tags={["React", "WebRTC", "Node.JS"]}
+            link="https://www.facecall.app"
+          />
+        </div>
         <div className="portfolio-items">
           <PortfolioItem
             imgSrc="/facecall-orange-cropped.png"
@@ -32,12 +43,12 @@ export default function Work() {
             ${spacing.page}
             min-height: 100vh;
             position: relative;
-            padding: 5vh 0;
+            padding: 25vh 5vw;
             display: flex;
             flex-direction: column;
 
             .portfolio-items {
-              margin-top: 10vh;
+              //margin-top: 10vh;
             }
           }
         `}
