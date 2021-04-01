@@ -9,9 +9,9 @@ export default function IconWrapper({ children, href }) {
       <style jsx>{`
         .icon-wrapper {
           display: inline-block;
-          width: ${spacing.headerIconWidth};
+          width: ${spacing.socialIconWidth};
           & + & {
-            margin-left: 2.75rem;
+            margin-left: 6rem;
           }
         }
       `}</style>
