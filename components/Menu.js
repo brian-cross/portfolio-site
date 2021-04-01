@@ -39,6 +39,7 @@ export default function Menu({ isOpen }) {
             justify-content: flex-end;
             background-color: ${theme.colors.menuBackground};
             text-align: right;
+            line-height: 1.25;
 
             a {
               font-size: clamp(4rem, 15vmin, 8rem);
