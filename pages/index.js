@@ -4,6 +4,7 @@ import Home from "../components/Home";
 import About from "../components/About";
 import Work from "../components/Work";
 import Contact from "../components/Contact";
+import Footer from "../components/Footer";
 
 export default function Main() {
   const [homeVisible, setHomeVisible] = useState(false);
@@ -19,6 +20,7 @@ export default function Main() {
       {headerVisible ? <About /> : null}
       {headerVisible ? <Work /> : null}
       {headerVisible ? <Contact /> : null}
+      {headerVisible ? <Footer /> : null}
     </>
   );
 }
