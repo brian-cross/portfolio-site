@@ -1,10 +1,9 @@
 import { forwardRef, useEffect } from "react";
-import theme from "../styles/theme";
 import spacing from "../styles/spacing";
 import gsap from "gsap";
 
 const MenuIcon = forwardRef((props, ref) => {
-  const { open, onClick } = props;
+  const { open, onClick, onMouseEnter, onMouseLeave } = props;
 
   useEffect(() => {
     const defaults = { duration: 0.3, ease: "power1.inOut" };
@@ -26,17 +25,23 @@ const MenuIcon = forwardRef((props, ref) => {
 
   return (
     <>
-      <div className="menu-icon" ref={ref} onClick={onClick}>
+      <div
+        className="menu-icon"
+        ref={ref}
+        onClick={onClick}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+      >
         <div className="top bar" />
         <div className="bottom bar" />
       </div>
       <style jsx>
         {`
           .menu-icon {
-            display: inline-block;
             position: relative;
-            width: ${spacing.headerIconWidth};
-            height: ${spacing.headerIconWidth};
+            margin-left: auto;
+            width: ${spacing.socialIconWidth};
+            height: ${spacing.socialIconWidth};
             cursor: pointer;
             visibility: hidden;
 
@@ -44,15 +49,15 @@ const MenuIcon = forwardRef((props, ref) => {
               position: absolute;
               width: 100%;
               height: 0.3125rem;
-              height: calc(${spacing.headerIconWidth} / 8);
+              height: calc(${spacing.socialIconWidth} / 8);
               background: currentColor;
 
               &:first-of-type {
-                top: calc(${spacing.headerIconWidth} / 4);
+                top: calc(${spacing.socialIconWidth} / 4);
               }
 
               &:last-of-type {
-                bottom: calc(${spacing.headerIconWidth} / 4);
+                bottom: calc(${spacing.socialIconWidth} / 4);
               }
             }
           }
