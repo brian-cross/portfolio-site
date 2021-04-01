@@ -66,8 +66,7 @@ export default function Home({ onVisible }) {
       opacity: 0,
       ease: "none",
       scrollTrigger: {
-        // trigger: ".home",
-        start: "bottom 98%",
+        start: "bottom bottom",
         end: "top 10%",
         pin: scrollPrompt.current,
         scrub: true,
@@ -123,17 +122,12 @@ export default function Home({ onVisible }) {
           </div>
         </div>
         <div className="scroll-prompt" ref={scrollPrompt}>
-          <p>
-            Scroll
-            <br />
-            {/* <FontAwesomeIcon icon={faChevronDown} /> */}
-            <svg aria-hidden="true" height="1em" viewBox="0 0 448 512">
-              <path
-                fill="currentColor"
-                d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"
-              ></path>
-            </svg>
-          </p>
+          <svg aria-hidden="true" height="2rem" viewBox="0 0 448 512">
+            <path
+              fill="currentColor"
+              d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"
+            ></path>
+          </svg>
         </div>
       </section>
       <style jsx>
@@ -183,14 +177,7 @@ export default function Home({ onVisible }) {
 
             .scroll-prompt {
               visibility: hidden;
-
-              p {
-                margin: 0;
-                text-align: center;
-                text-transform: uppercase;
-                line-height: 1.75;
-                color: ${theme.colors.lightGrey};
-              }
+              color: ${theme.colors.lightGrey};
             }
           }
         `}
