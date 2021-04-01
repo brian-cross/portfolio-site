@@ -52,6 +52,7 @@ export default css.global`
   }
 
   a,
+  footer,
   p {
     font-size: 1.5rem;
   }

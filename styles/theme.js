@@ -9,7 +9,7 @@ const sectionBgMain = `linear-gradient(80deg, hsl(219, 41%, 13%), hsl(212, 40%, 
 const sectionBgAbout = `linear-gradient(80deg, hsl(219, 41%, 26%), hsl(212, 40%, 48%))`;
 const sectionBgWork = `linear-gradient(-80deg, hsl(219, 41%, 9%), hsl(212, 40%, 20%))`;
 const sectionBgContact = `linear-gradient(-80deg, hsl(219, 41%, 26%), hsl(212, 40%, 48%))`;
-// background: linear-gradient(to right, #92FE9D, #00C9FF);
+const footerBg = `linear-gradient(-30deg, hsl(219, 41%, 6%), hsl(212, 40%, 12%))`;
 
 const theme = {
   colors: {
@@ -19,6 +19,7 @@ const theme = {
     sectionBgAbout,
     sectionBgWork,
     sectionBgContact,
+    footerBg,
     primary,
     accent,
     white,
