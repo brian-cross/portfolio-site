@@ -22,6 +22,7 @@ export default function useSlideMenu(isOpen) {
       // Open menu
       gsap
         .timeline()
+        .set(menuRef.current, { opacity: 1 })
         .to(menuRef.current, {
           scaleX: 1,
           duration: 0.6,
@@ -38,22 +39,17 @@ export default function useSlideMenu(isOpen) {
       // Close menu
       gsap
         .timeline()
-        .to(linksRef.current, {
+        .to([menuRef.current, linksRef.current], {
           opacity: 0,
-          yPercent: 50,
-          stagger: -0.1,
-          ease: "power2.out",
-          duration: 1,
+          ease: "none",
+          duration: 0.3,
         })
-        .to(
-          menuRef.current,
-          {
-            scaleX: 0,
-            duration: 0.6,
-            ease: "power2.out",
-          },
-          ">-0.25"
-        );
+        .set(linksRef.current, {
+          yPercent: 50,
+        })
+        .set(menuRef.current, {
+          scaleX: 0,
+        });
     }
   }, [isOpen]);
 
