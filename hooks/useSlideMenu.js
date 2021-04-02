@@ -1,57 +1,65 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useReducer, useRef } from "react";
 import gsap from "gsap";
 
 export default function useSlideMenu(isOpen) {
-  const menuRef = useRef(null);
-  const linksRef = useRef(null);
+  const menu = useRef();
+  const links = useRef();
+  const open = useRef();
+  const close = useRef();
 
   useEffect(() => {
-    linksRef.current = menuRef.current.querySelectorAll("li");
+    links.current = menu.current.querySelectorAll("li");
 
     // Initialize menu to closed state
-    gsap.set(menuRef.current, {
+    gsap.set(menu.current, {
       visibility: "visible",
-      scaleX: 0,
+      // scaleX: 0,
       transformOrigin: "right",
     });
-    gsap.set(linksRef.current, { opacity: 0, yPercent: 50 });
-  }, []);
 
-  useEffect(() => {
-    if (isOpen) {
-      // Open menu
-      gsap
-        .timeline()
-        .set(menuRef.current, { opacity: 1 })
-        .to(menuRef.current, {
+    // gsap.set(links.current, { opacity: 0, yPercent: 50 });
+
+    // Create the menu open / close animations
+    open.current = gsap
+      .timeline({ paused: true })
+      .set(menu.current, { opacity: 1 })
+      .fromTo(
+        menu.current,
+        { scaleX: 0 },
+        {
           scaleX: 1,
           duration: 0.6,
           ease: "power2.out",
-        })
-        .to(linksRef.current, {
+        }
+      )
+      .fromTo(
+        links.current,
+        { opacity: 0, yPercent: 50 },
+        {
           opacity: 1,
           yPercent: 0,
           stagger: 0.1,
           ease: "power2.out",
           duration: 1.5,
-        });
+        }
+      );
+
+    close.current = gsap.timeline({ paused: true }).to(menu.current, {
+      opacity: 0,
+      ease: "none",
+      duration: 0.3,
+    });
+  }, []);
+
+  useEffect(() => {
+    if (isOpen) {
+      close.current.pause();
+      open.current.play(0);
     } else {
-      // Close menu
-      gsap
-        .timeline()
-        .to([menuRef.current, linksRef.current], {
-          opacity: 0,
-          ease: "none",
-          duration: 0.3,
-        })
-        .set(linksRef.current, {
-          yPercent: 50,
-        })
-        .set(menuRef.current, {
-          scaleX: 0,
-        });
+      open.current.pause();
+      close.current.play(0);
     }
   }, [isOpen]);
 
-  return menuRef;
+  return menu;
 }
