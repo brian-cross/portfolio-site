@@ -49,8 +49,10 @@ const MenuIcon = forwardRef((props, ref) => {
             .bar {
               position: absolute;
               width: 100%;
-              height: 0.3125rem;
-              height: calc(${spacing.socialIconWidth} / 8);
+              height: 3px;
+              @media screen and (min-width: 700px) {
+                height: 5px;
+              }
               background: currentColor;
 
               &:first-of-type {
