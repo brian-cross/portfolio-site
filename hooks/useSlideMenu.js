@@ -12,14 +12,14 @@ export default function useSlideMenu(isOpen) {
 
     // Initialize menu
     gsap.set(menu.current, {
-      visibility: "visible",
+      autoAlpha: 1,
       transformOrigin: "right",
     });
 
     // Create the menu open / close animations
     open.current = gsap
       .timeline({ paused: true })
-      .set(menu.current, { opacity: 1 })
+      .set(menu.current, { autoAlpha: 1 })
       .fromTo(
         menu.current,
         { scaleX: 0 },
@@ -31,9 +31,9 @@ export default function useSlideMenu(isOpen) {
       )
       .fromTo(
         links.current,
-        { opacity: 0, yPercent: 50 },
+        { autoAlpha: 0, yPercent: 50 },
         {
-          opacity: 1,
+          autoAlpha: 1,
           yPercent: 0,
           stagger: 0.1,
           ease: "power2.out",
@@ -42,7 +42,7 @@ export default function useSlideMenu(isOpen) {
       );
 
     close.current = gsap.timeline({ paused: true }).to(menu.current, {
-      opacity: 0,
+      autoAlpha: 0,
       ease: "none",
       duration: 0.3,
     });
