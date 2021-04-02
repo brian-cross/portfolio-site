@@ -10,16 +10,16 @@ export default function Menu({ isOpen }) {
         <nav>
           <ul>
             <li>
-              <a href="#">Work</a>
+              <a href="#">About</a>
             </li>
             <li>
-              <a href="#">About</a>
+              <a href="#">Projects</a>
             </li>
             <li>
               <a href="#">Contact</a>
             </li>
             <li>
-              <a href="#">Articles</a>
+              <a href="#">Blog</a>
             </li>
           </ul>
         </nav>
