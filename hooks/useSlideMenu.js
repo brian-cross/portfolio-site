@@ -10,14 +10,11 @@ export default function useSlideMenu(isOpen) {
   useEffect(() => {
     links.current = menu.current.querySelectorAll("li");
 
-    // Initialize menu to closed state
+    // Initialize menu
     gsap.set(menu.current, {
       visibility: "visible",
-      // scaleX: 0,
       transformOrigin: "right",
     });
-
-    // gsap.set(links.current, { opacity: 0, yPercent: 50 });
 
     // Create the menu open / close animations
     open.current = gsap
