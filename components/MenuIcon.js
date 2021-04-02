@@ -3,7 +3,7 @@ import spacing from "../styles/spacing";
 import gsap from "gsap";
 
 const MenuIcon = forwardRef((props, ref) => {
-  const { open, onClick, onMouseEnter, onMouseLeave } = props;
+  const { open, onClick, onMouseEnter, onMouseLeave, onTouchEnd } = props;
 
   useEffect(() => {
     const defaults = { duration: 0.3, ease: "power1.inOut" };
@@ -31,6 +31,7 @@ const MenuIcon = forwardRef((props, ref) => {
         onClick={onClick}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
+        onTouchEnd={onTouchEnd}
       >
         <div className="top bar" />
         <div className="bottom bar" />

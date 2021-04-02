@@ -10,6 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Header({ animateIn, onVisible }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mouseOver, setMouseOver] = useState(false);
 
   const menuIcon = useRef();
 
@@ -30,21 +31,40 @@ export default function Header({ animateIn, onVisible }) {
       trigger: "window",
       start: "5% top",
       end: "+=5%",
-      onLeave: () => setScrolled(true),
-      onLeaveBack: () => setScrolled(false),
+      onLeave: () => {
+        setScrolled(true);
+        dimIcon();
+      },
+      onLeaveBack: () => {
+        setScrolled(false);
+        showIcon();
+      },
     });
   }, []);
 
   function handleMouseEnter() {
+    setMouseOver(true);
     if (scrolled) showIcon(0.3);
   }
 
   function handleMouseLeave() {
+    setMouseOver(false);
     if (scrolled && !menuOpen) dimIcon(0.3);
   }
 
+  function handleTouchEnd(e) {
+    e.preventDefault();
+    handleClick();
+    menuIcon.current.blur();
+  }
+
   function handleClick() {
-    setMenuOpen(prev => !prev);
+    setMenuOpen(prev => {
+      if (!prev) showIcon(0.3);
+      if (prev && scrolled && !mouseOver) dimIcon(0.3);
+
+      return !prev;
+    });
   }
 
   function dimIcon(duration = 1) {
@@ -73,6 +93,7 @@ export default function Header({ animateIn, onVisible }) {
             ref={menuIcon}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onTouchEnd={handleTouchEnd}
             onClick={handleClick}
           />
         </div>
