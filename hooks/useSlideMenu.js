@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useRef } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
 export default function useSlideMenu(isOpen) {
