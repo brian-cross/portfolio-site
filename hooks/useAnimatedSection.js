@@ -1,9 +1,9 @@
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { SplitText } from "gsap/dist/SplitText";
 import { useEffect, useRef } from "react";
+import scrollReveal from "../utils/scrollReveal";
 
-gsap.registerPlugin(ScrollTrigger, SplitText);
+gsap.registerPlugin(SplitText);
 
 export default function useAnimatedSection() {
   const ref = useRef();
@@ -36,13 +36,11 @@ export default function useAnimatedSection() {
         "<+0.6"
       );
 
-    ScrollTrigger.create({
-      trigger: target,
-      start: "top 80%",
-      end: "top 70%",
-      onLeave: () => tl.timeScale(1).play(),
-      onLeaveBack: () => tl.timeScale(2).reverse(),
-    });
+    scrollReveal(
+      target,
+      () => tl.timeScale(1).play(),
+      () => tl.timeScale(2).reverse()
+    );
   }, []);
 
   return ref;

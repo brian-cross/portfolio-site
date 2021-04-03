@@ -1,14 +1,14 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { SplitText } from "gsap/dist/SplitText";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import spacing from "../styles/spacing";
 import theme from "../styles/theme";
+import scrollReveal from "../utils/scrollReveal";
 
-gsap.registerPlugin(ScrollTrigger, SplitText);
+gsap.registerPlugin(SplitText);
 
 export default function PortfolioItem({
   heading,
@@ -45,21 +45,17 @@ export default function PortfolioItem({
       paused: true,
     });
 
-    ScrollTrigger.create({
-      trigger: graphic,
-      start: "top 80%",
-      end: "top 70%",
-      onLeave: () => graphicTween.timeScale(1).play(),
-      onLeaveBack: () => graphicTween.timeScale(2).reverse(),
-    });
+    scrollReveal(
+      graphic,
+      () => graphicTween.timeScale(1).play(),
+      () => graphicTween.timeScale(2).reverse()
+    );
 
-    ScrollTrigger.create({
-      trigger: textRef.current,
-      start: "top 80%",
-      end: "top 70%",
-      onLeave: () => textTween.timeScale(1).play(),
-      onLeaveBack: () => textTween.timeScale(2).reverse(),
-    });
+    scrollReveal(
+      textRef.current,
+      () => textTween.timeScale(1).play(),
+      () => textTween.timeScale(2).reverse()
+    );
   }, []);
 
   return (
