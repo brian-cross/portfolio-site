@@ -69,7 +69,7 @@ export default function Header({ animateIn, onVisible }) {
 
   function dimIcon(duration = 1) {
     gsap.to(menuIcon.current, {
-      opacity: 0.2,
+      opacity: 0.3,
       ease: "none",
       duration,
     });
