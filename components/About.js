@@ -69,13 +69,13 @@ export default function About() {
             padding: 20vh 5vw;
             display: flex;
             flex-direction: column;
-            clip-path: polygon(
-              0% 2vmin,
-              60% 4vmin,
-              100% 0%,
-              100% 100%,
-              0% 100%
-            );
+            //clip-path: polygon(
+            //  0% 2vmin,
+            //  60% 4vmin,
+            //  100% 0%,
+            //  100% 100%,
+            //  0% 100%
+            //);
             background: ${theme.colors.sectionBgAbout};
 
             .content {

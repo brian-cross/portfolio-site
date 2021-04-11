@@ -2,8 +2,6 @@ import { gsap } from "gsap";
 import { DrawSVGPlugin } from "gsap/dist/DrawSVGPlugin";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useEffect, useRef } from "react";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import spacing from "../styles/spacing";
 import theme from "../styles/theme";
 
@@ -50,17 +48,6 @@ export default function Home({ onVisible }) {
         scrub: 1,
       },
     });
-
-    // gsap.to(".headings", {
-    //   yPercent: 30,
-    //   ease: "none",
-    //   scrollTrigger: {
-    //     trigger: ".home",
-    //     start: "top",
-    //     end: "bottom",
-    //     scrub: true,
-    //   },
-    // });
 
     gsap.to(scrollPrompt.current, {
       opacity: 0,

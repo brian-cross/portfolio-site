@@ -129,13 +129,13 @@ export default function Contact() {
             padding: 25vh 5vw;
             display: flex;
             flex-direction: column;
-            clip-path: polygon(
-              0% 2vmin,
-              65% 5vmin,
-              100% 0%,
-              100% 100%,
-              0% 100%
-            );
+            //clip-path: polygon(
+            //  0% 2vmin,
+            //  65% 5vmin,
+            //  100% 0%,
+            //  100% 100%,
+            //  0% 100%
+            //);
             background: ${theme.colors.sectionBgContact};
 
             .content {
